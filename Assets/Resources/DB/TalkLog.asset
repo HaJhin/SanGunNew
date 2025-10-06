@@ -1,0 +1,1004 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c096fa4836ab14d929f3decc5e9095, type: 3}
+  m_Name: TalkLog
+  m_EditorClassIdentifier: 
+  Story:
+  - ID: D1101
+    SID: S1_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uD081\uD081\u2026 \uBB50\uC57C, \uC774 \uB354\uB7FD\uACE0 \uCD95\uCD95\uD55C
+      \uBB3C\uB0C4\uC0C8 \uD48D\uAE30\uB294 \uAE30\uC6B4\uC740?"
+    NextID: D1102
+  - ID: D1102
+    SID: S1_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB098\uAC00\uBD10\uC57C\uACA0\uC5B4."
+    NextID: None
+  - ID: D1201
+    SID: S1_2
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC774 \uB188\uB4E4\uC740 \uBB50\uC57C? \uB54C\uB9AC\uB294 \uB290\uB08C\uB3C4
+      \uC774\uC0C1\uD55C\uB370\uB2E4\uAC00\u2026 \uBB50\uB77C \uD558\uB294 \uB9D0\uB3C4
+      \uC774\uC0C1\uD55C\uB370\u2026"
+    NextID: D1202
+  - ID: D1202
+    SID: S1_2
+    Speaker: ???
+    Dialogue: "\uC544\uC774\uACE0! \uC0AC\uB78C \uC0B4\uB824"
+    NextID: D1203
+  - ID: D1203
+    SID: S1_2
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C? \uC624\uB298\uB530\uB77C \uB0B4 \uAD6C\uC5ED\uC774 \uC65C\uC774\uB807\uAC8C
+      \uC18C\uB780\uC2A4\uB7FD\uC9C0?"
+    NextID: None
+  - ID: D1301
+    SID: S1_3
+    Speaker: ???
+    Dialogue: "\uC544\uC774\uACE0 \uC0B0\uAD70\uB2D8 \uC0B4\uB824\uC8FC\uC2ED\uC2DC\uC624!"
+    NextID: D1302
+  - ID: D1302
+    SID: S1_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C \uB299\uC740 \uC778\uAC04, \uB0A0 \uC54C\uC544?"
+    NextID: D1303
+  - ID: D1303
+    SID: S1_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uC800\uB294 \uC774 \uC0B0 \uC911\uD131\uC5D0 \uC788\uB294 \uB9C8\uC744\uC758
+      \uCD0C\uC7A5\uC778\uB370 \uBD80\uB514 \uC800\uB97C \uC0B4\uB824\uC8FC\uC2DC\uBA74
+      \uC774 \uC0C1\uD669\uC5D0 \uB300\uD574 \uC124\uBA85\uD574 \uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4!"
+    NextID: D1304
+  - ID: D1304
+    SID: S1_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC544 \uADC0\uCC2E\uC740\uB370\u2026 \uC88B\uC544. \uC774\uBC88\uB9CC
+      \uC0B4\uB824\uC8FC\uB3C4\uB85D \uD558\uACA0\uC5B4."
+    NextID: None
+  - ID: D1305
+    SID: S1_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB798\uC11C \uBB34\uC2A8 \uC0C1\uD669\uC774\uC57C?"
+    NextID: D1306
+  - ID: D1306
+    SID: S1_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uC544 \uAE00\uC384! \uC800 \uC606\uC5D0 \uC12C\uB098\uB77C \uAD34\uBB3C\uB4E4\uC774
+      \uCCD0\uB4E4\uC5B4 \uC654\uC9C0 \uBB61\uB2C8\uAE4C!"
+    NextID: D1307
+  - ID: D1307
+    SID: S1_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uADF8\uB798\uC11C \uC8FC\uBBFC\uB4E4 \uBA87\uBA87\uC740 \uC8FD\uACE0
+      \uB300\uBD80\uBD84\uC740 \uB3C4\uB9DD\uCCD0 \uD769\uC5B4\uC838 \uBC84\uB838\uC2B5\uB2C8\uB2E4\u2026
+      \uBD80\uB514 \uADF8\uB4E4\uC744 \uAD6C\uD574\uC8FC\uC2DC\uC9C0 \uC54A\uACA0\uC2B5\uB2C8\uAE4C?"
+    NextID: D1308
+  - ID: D1308
+    SID: S1_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB0B4 \uAD6C\uC5ED\uC5D0 \uBA4B\uB300\uB85C \uB9C8\uC744\uC744 \uC9D3\uACE0
+      \uC0B0\uAC78\uB85C\uB3C4 \uBAA8\uC790\uB77C \uAD6C\uD574\uB2EC\uB77C\uACE0?
+      \uC2EB\uC740\uB370?"
+    NextID: D1309
+  - ID: D1309
+    SID: S1_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC0C1\uD669\uB3C4 \uC54C\uC558\uACA0\uB2E4\u2026 \uADF8\uB7FC \uC774\uC81C
+      \uAEBC\uC838!!!"
+    NextID: D1310
+  - ID: D1310
+    SID: S1_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC790\uB294 \uC0AC\uC774\uC5D0 \uC774\uC0C1\uD55C\uAC83\uB4E4\uC774
+      \uB0B4 \uC0B0\uC5D0\uC11C \uBB54 \uC9D3\uC744 \uD558\uB294\uAC70\uC57C\u2026
+      \uC804\uBD80 \uCAD2\uC544 \uB0B4\uC57C\uACA0\uC5B4."
+    NextID: None
+  - ID: D1401
+    SID: S1_4
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C. \uC660 \uC0C1\uC790\uC9C0? \uB204\uAC00 \uB5A8\uC5B4\uB728\uB838\uB098?
+      \uADF8\uB7EC\uAE30\uC5D4 \uBA40\uCA61\uD55C\uB370?"
+    NextID: D1402
+  - ID: D1402
+    SID: S1_4
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC660 \uC7A1\uB3D9\uC0AC\uB2C8\uC5D0\u2026 \uD081\uD081. \uBB50\uC9C0?
+      \uC0B0\uC5F4\uB9E4\uC778\uAC00?"
+    NextID: D1403
+  - ID: D1403
+    SID: S1_4
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC77C\uB2E8 \uCC59\uACA8\uB458\uAE4C\u2026"
+    NextID: None
+  - ID: D1501
+    SID: S1_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC57C. \uB098\uC640\uBD10."
+    NextID: D1502
+  - ID: D1502
+    SID: S1_5
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\u2026"
+    NextID: D1503
+  - ID: D1503
+    SID: S1_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC57C. \uAC70\uAE30 \uAF2C\uB9AC \uB2E4 \uBCF4\uC774\uB2C8\uAE4C
+      \uB098\uC624\uB77C\uACE0."
+    NextID: D1504
+  - ID: D1504
+    SID: S1_5
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uD5E4. \uD5E4\uD5E4\u2026 \uB2E4 \uBCF4\uC600\uB098\uC694\u2026?"
+    NextID: D1505
+  - ID: D1505
+    SID: S1_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB7FC \uADF8 \uD070 \uAF2C\uB9AC\uAC00 \uC228\uACA8 \uC9C0\uACA0\uB0D0?"
+    NextID: D1506
+  - ID: D1506
+    SID: S1_5
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uADF8.. \uADF8\uB7FC \uBCF4\uC2E0 \uAE40\uC5D0\u2026 \uBB3C\uAC74
+      \uC880 \uC0AC\uAC00\uC2E4\uB798\uC694\u2026? \uC55E\uC740 \uC704\uD5D8\uD560\uC218\uB3C4
+      \uC788\uC796\uC544\uC694\u2026?"
+    NextID: D1507
+  - ID: D1507
+    SID: S1_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uAC00\uC9C4\uAC8C\u2026 \uC544, \uC544\uAE4C \uC0C1\uC790\uC5D0\uC11C
+      \uC880 \uAC00\uC838 \uC654\uC9C0?"
+    NextID: D1508
+  - ID: D1508
+    SID: S1_5
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\u2026\uADF8 \uC0C1\uC790 \uC81C\uAEC0\uB370\u2026"
+    NextID: D1509
+  - ID: D1509
+    SID: S1_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uB77C\uACE0?"
+    NextID: D1510
+  - ID: D1510
+    SID: S1_5
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uC544, \uC544\uB2C8\uC5D0\uC694! \uC544\uD558\uD558\u2026"
+    NextID: None
+  - ID: D1601
+    SID: S1_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C? \uBB54\uB370? \u2026\uC77C\uB2E8 \uC800 \uBCF4\uAE30
+      \uC2EB\uC740 \uAC83\uB4E4 \uBD80\uD130 \uCE58\uC6CC\uC57C\uACA0\uC5B4."
+    NextID: D1601
+  - ID: D1602
+    SID: S1_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC57C \uAF2C\uB9F9\uC774. \uCAD2\uC544 \uC624\uB358 \uB188\uB4E4\uC740
+      \uB2E4 \uC7A1\uC558\uC73C\uB2C8\uAE4C \uC774\uC81C \uAEBC\uC838."
+    NextID: D1602
+  - ID: D1603
+    SID: S1_6
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\u2026\uC2EB\uC5B4."
+    NextID: D1603
+  - ID: D1604
+    SID: S1_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50?"
+    NextID: None
+  - ID: D2101
+    SID: S2_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uD558\uC544... \uAF2C\uB9F9\uC774\uB294 \uC5B4\uB514\uAC00\uACE0
+      \uBB3C\uBE44\uB9B0\uB0B4 \uB098\uB294 \uAC83\uB4E4\uC774 \uAE38\uC744 \uB9C9\uACE0
+      \uC788\uC5B4? \uC800\uB9AC \uBE44\uCF1C!!"
+    NextID: D2102
+  - ID: D2102
+    SID: S2_1
+    Speaker: "\uC57D\uCD08\uAFBC"
+    Dialogue: "\uC544\uC774\uACE0! \uC808 \uAD6C\uD558\uB7EC \uC624\uC168\uAD70\uC694!"
+    NextID: D2103
+  - ID: D2103
+    SID: S2_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C, \uC800\uB9AC \uAEBC\uC838!"
+    NextID: D2104
+  - ID: D2104
+    SID: S2_1
+    Speaker: "\uC57D\uCD08\uAFBC"
+    Dialogue: "\uD558\uD558! \uBD80\uB044\uB7EC\uC6CC \uD558\uC2DC\uAE34! \uC5EC\uAE30
+      \uC0C1\uC790\uC5D0 \uC81C\uAC00 \uB3C4\uC6C0\uC774 \uB420 \uBB3C\uAC74\uB4E4\uC744
+      \uBA87 \uAC1C \uB123\uC5B4 \uB193\uC558\uC2B5\uB2C8\uB2E4!"
+    NextID: D2105
+  - ID: D2105
+    SID: S2_1
+    Speaker: "\uC57D\uCD08\uAFBC"
+    Dialogue: "\uAC00\uC838\uAC00\uC154\uC11C \uB9C8\uC74C\uAECF \uC0AC\uC6A9\uD558\uC138\uC694!"
+    NextID: None
+  - ID: D2301
+    SID: S2_3
+    Speaker: "\uC758\uC0AC"
+    Dialogue: "\uAD6C\uD558\uB7EC \uC640 \uC8FC\uC154\uC11C \uAC10..."
+    NextID: D2302
+  - ID: D2302
+    SID: S2_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB10C \uB610 \uBB50\uC57C! \uC774\uB188\uB4E4 \uBE44\uC0C1\uC2DD\uB7C9\uC774\uB0D0?"
+    NextID: D2303
+  - ID: D2303
+    SID: S2_3
+    Speaker: "\uC758\uC0AC"
+    Dialogue: "\uADF8\uB7F4\uB9AC\uAC00\uC694! \uC800\uB294 \uB9C8\uC744\uC758 \uC758\uC0AC\uC785\uB2C8\uB2E4!
+      \uAD6C\uD574 \uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4!"
+    NextID: D2304
+  - ID: D2304
+    SID: S2_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB410\uC73C\uB2C8\uAE4C \uC800\uB9AC \uAEBC\uC838!"
+    NextID: D2305
+  - ID: D2305
+    SID: S2_3
+    Speaker: "\uC758\uC0AC"
+    Dialogue: "\uD558\uD558! \uADF8\uB7FC \uC5EC\uAE30 \uD68C\uBCF5\uC57D\uC744 \uB4DC\uB9B4\uD14C\uB2C8
+      \uC548\uB155\uD788 \uACC4\uC2ED\uC2DC\uC624!"
+    NextID: D2306
+  - ID: D2306
+    SID: S2_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB0B4\uAC00 \uC790\uB358 \uC0AC\uC774\uC5D0 \uC774\uC0C1\uD55C \uB188\uB4E4\uB9CC
+      \uBAA8\uC600\uB098..."
+    NextID: None
+  - ID: D2501
+    SID: S2_5
+    Speaker: "\uC18C\uB140"
+    Dialogue: "...\uC774 \uC55E, \uC704\uD5D8\uD574."
+    NextID: D2502
+  - ID: D2502
+    SID: S2_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC5B4\uB514\uAC14\uB2E4... \uC544\uB2C8 \uB0B4\uAC00 \uC65C \uC774\uB7F0
+      \uC18C\uB9AC\uB97C..."
+    NextID: D2503
+  - ID: D2503
+    SID: S2_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uBCF4\uB2E4 \uC704\uD5D8\uD558\uB2E4\uACE0? \uB0B4\uAC00?"
+    NextID: D2504
+  - ID: D2504
+    SID: S2_5
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uD070... \uC18C \uC788\uC5B4."
+    NextID: D2505
+  - ID: D2505
+    SID: S2_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC18C? \uD765. \uC624\uB79C\uB9CC\uC5D0 \uD3EC\uC2DD\uD558\uACA0\uB124."
+    NextID: None
+  - ID: D2601
+    SID: S2_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "...\uC800\uAC8C \uC18C\uB77C\uACE0?"
+    NextID: D2602
+  - ID: D2602
+    SID: S2_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uD558! \uC800\uAC8C \uC18C\uBA74 \uC778\uAC04\uB4E4\uC774 \uAE30\uB974\uB294
+      \uD669\uC18C\uB294 \uAC15\uC544\uC9C0\uACA0\uB124."
+    NextID: None
+  - ID: D3101
+    SID: S3_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uACE0\uC591... \uD638\uB791\uC544, \uB9C8\uC744 \uC0AC\uB78C\uB4E4
+      \uAD6C\uD574\uC918\uC11C \uACE0\uB9C8\uC6CC."
+    NextID: D3102
+  - ID: D3102
+    SID: S3_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uACE0\uC591- \uC544\uB2C8, \uD638\uB791? \uC0B0\uAD70\uC774\uB2E4!
+      \uC774 \uBC24\uD1A8\uB9CC\uD55C \uAC83\uC544!"
+    NextID: D3103
+  - ID: D3103
+    SID: S3_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB9AC\uACE0 \uC65C \uC790\uAFB8 \uC8FC\uBCC0\uC5D0\uC11C \uC5BC\uCA61\uAC70\uB824?
+      \uB208 \uC55E\uC5D0\uC11C \uC548 \uC0AC\uB77C\uC838?!"
+    NextID: D3104
+  - ID: D3104
+    SID: S3_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uADF8\uB7FC \uB610 \uBD10?"
+    NextID: D3105
+  - ID: D3105
+    SID: S3_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB0E5 \uC0AC\uB77C\uC9C0\uB77C\uB294... \uD558, \uB410\uB2E4...
+      \uADF8\uB798\uADF8\uB798."
+    NextID: None
+  - ID: D3301
+    SID: S3_3
+    Speaker: "\uBCD1\uC0AC\uB4E4"
+    Dialogue: "\uC5C9\uC5C9! \uAD6C\uD574\uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4!"
+    NextID: D3302
+  - ID: D3302
+    SID: S3_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC800\uAC83\uB3C4 \uBABB \uC774\uAE30\uACE0 \uC7A1\uD600\uC788\uB2E4\uACE0?
+      \uB108\uB128 \uBC14\uBCF4\uB0D0? \uC5B4\uB5BB\uAC8C \uBCD1\uC0AC\uAC00 \uB41C\uAC70\uC57C?"
+    NextID: D3303
+  - ID: D3303
+    SID: S3_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB108\uB124 \uC9C4\uC9DC \uC57D\uACE8\uC774\uAD6C\uB098?"
+    NextID: D3304
+  - ID: D3304
+    SID: S3_3
+    Speaker: "\uBCD1\uC0AC\uB4E4"
+    Dialogue: "\uC544\uBB34\uB9AC \uAD6C\uD574\uC8FC\uC168\uB2E4 \uD574\uB3C4 \uB9D0\uC774
+      \uB108\uBB34 \uC2EC\uD569\uB2C8\uB2E4!"
+    NextID: D3305
+  - ID: D3305
+    SID: S3_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC2EC\uD55C\uAC74 \uB108\uB124 \uBAB8\uC5D0\uC11C \uB098\uB294 \uB0C4\uC0C8\uACE0.
+      \uB0B4 \uC55E\uC5D0\uC11C \uAEBC\uC838!"
+    NextID: D3306
+  - ID: D3306
+    SID: S3_3
+    Speaker: "\uBCD1\uC0AC\uB4E4"
+    Dialogue: "\uC544\uBB34\uB9AC \uC800\uD76C\uAC00 \uC7A1\uD78C \uD0D3\uC5D0 \uBA70\uCE60\uB3D9\uC548
+      \uBABB \uC53B\uC5C8\uB2E4\uACE0 \uD574\uB3C4 \uB108\uBB34\uD558\uC2ED\u2026
+      \uD081\uD081 \uC73C\uC545! \uC774\uAC8C \uBB34\uC2A8 \uB0C4\uC0C8\uC57C!"
+    NextID: D3307
+  - ID: D3307
+    SID: S3_3
+    Speaker: "\uC2E0"
+    Dialogue: "\uBE68\uB9AC \uAC00\uB77C\uACE0! \uCF54 \uC544\uD504\uB2C8\uAE4C!!"
+    NextID: D3308
+  - ID: D3308
+    SID: S3_3
+    Speaker: "\uBCD1\uC0AC\uB4E4"
+    Dialogue: "\uC2E4\uB840\uD588\uC2B5\uB2C8\uB2E4!!!"
+    NextID: None
+  - ID: D3501
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uB204\uAD6C\uB0D0! \uBA48\uCDB0\uB77C!"
+    NextID: D3502
+  - ID: D3502
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC774\uAC74 \uB610 \uBB50\uC57C?"
+    NextID: D3503
+  - ID: D3503
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uC774 \uC55E\uC740 \uBABB \uC9C0\uB098\uAC04\uB2E4! \uC774 \uB354\uB7EC\uC6B4
+      \uC9D0\uC2B9\uC544!"
+    NextID: D3504
+  - ID: D3504
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBE44\uCF1C. \uB09C \uB0B4 \uAC08 \uAE38 \uAC08\uBFD0\uC774\uB2C8\uAE4C."
+    NextID: D3505
+  - ID: D3505
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uC9D0\uC2B9\uC774\uB77C \uC0AC\uB78C \uB9D0\uC744 \uBABB \uC54C\uC544
+      \uB4E3\uB290\uB0D0? \uBABB\uAC04\uB300\uB3C4!"
+    NextID: D3506
+  - ID: D3506
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C? \uC774\uAC8C \uAC10\uD788 \uB204\uAD6C\uD55C\uD14C\u2026!"
+    NextID: D3507
+  - ID: D3507
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uBB34\uC2A8 \uC18C\uB780\uC785\uB2C8\uAE4C?"
+    NextID: D3508
+  - ID: D3508
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uC544! \uCD0C\uC7A5\uB2D8, \uC544\uBB34\uAC83\uB3C4 \uC544\uB2D9\uB2C8\uB2E4."
+    NextID: D3509
+  - ID: D3509
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC544\uBB34\uAC83\uB3C4 \uC544\uB2C8\uBA74 \uB9C8\uC744\uAE4C\uC9C0
+      \uC18C\uB9AC\uAC00 \uB4E4\uB9B4\uB9AC\uAC00 \uC5C6\uC9C0\uC694?"
+    NextID: D3510
+  - ID: D3510
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4!"
+    NextID: D3511
+  - ID: D3511
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uADF8\uB798\uC11C \uBB34\uC2A8 \uC77C\u2026 \uC544\uB2C8 \uC0B0\uAD70\uB2D8
+      \uC544\uB2C8\uC2ED\uB2C8\uAE4C?"
+    NextID: D3512
+  - ID: D3512
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uBB34\uC2A8 \uC77C\uB85C \uC624\uC168\uB098\uC694?"
+    NextID: D3513
+  - ID: D3513
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB10C \uBB50\u2026 \uC544!\_ \uC804\uC5D0 \uAD6C\uD574\uC92C\uB358
+      \u2026 \uBB50\uB354\uB77C?"
+    NextID: D3514
+  - ID: D3514
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uD558\uD558! \uCD0C\uC7A5\uC785\uB2C8\uB2E4.\_"
+    NextID: D3515
+  - ID: D3515
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB798! \uCD0C\uC7A5. \uC774 \uB140\uC11D\uC880 \uBE44\uD0A4\uAC8C
+      \uD574. \uB098 \uC9C0\uB098\uAC00\uC57C\uD558\uB2C8\uAE4C."
+    NextID: D3516
+  - ID: D3516
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uD558\uD558! \uC0B0\uAD70\uB2D8\uC774\uB77C\uBA74 \uADF8\uB807\uAC8C
+      \uB9D0\uD558\uC2E4\uAC70\uB77C \uC0DD\uAC01\uD588\uC2B5\uB2C8\uB2E4... \uADF8\uB7F0\uB370
+      \uC800\uD76C\uAC00 \uC65C \uBE44\uCF1C\uC57C\uD558\uC8E0?"
+    NextID: D3517
+  - ID: D3517
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50? \uC774\uAC8C \uAD6C\uD574\uC904\uB550 \uAC04\uB3C4 \uB0B4\uB193\uC744\uB4EF
+      \uAD74\uC5C8\uC73C\uBA74\uC11C \uAC11\uC790\uAE30 \uC65C\uC774\uB798?"
+    NextID: D3518
+  - ID: D3518
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uADF8\uC57C, \uC544\uAE4C\uB294 \uC9C0\uB0AC\uC73C\uB2C8 \uB9D0\uC774\uC8E0.
+      \uC0B0\uAD70\uB2D8\uC774 \uC0B0\uC758 \uC8FC\uC778\uC778 \uAC83\uCC98\uB7FC
+      \uC800\uB294 \uC774 \uB9C8\uC744\uC758 \uC8FC\uC778\uC774\uB2C8 \uC874\uC911\uC744
+      \uBCF4\uC774\uC2DC\uC8E0."
+    NextID: D3519
+  - ID: D3519
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uC544~. \uD639\uC2DC \uC9D0\uC2B9\uC774\uB77C \uC874\uC911\uC774\uB77C\uB294
+      \uB9D0\uC744 \uBAA8\uB974\uB824\uB098?"
+    NextID: D3520
+  - ID: D3520
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC774\uAC8C \uAD6C\uD574\uC92C\uB354\uB2C8 \uC0B4\uB9CC\uD574\uC9C0\uB2C8\uAE4C
+      \uAC04\uC774 \uBC30 \uBC16\uC73C\uB85C \uB9C8\uC2E4\uC744 \uB098\uC654\uB098..."
+    NextID: D3521
+  - ID: D3521
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uB9D0 \uC870\uC2EC\uD558\uC138\uC694. \uC0B0\uAD70\uB2D8. \uC5EC\uAE30\uC5D0
+      \uB2F9\uC2E0\uC758 \uD3B8\uC744 \uB4E4\uC5B4\uC904 \uC778\uAC04\uC740 \uC5C6\uC2B5\uB2C8\uB2E4."
+    NextID: D3522
+  - ID: D3522
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC774\uB798\uC11C \uC778\uAC04\uC740\u2026 \uC800\uB9AC \uBE44\uCF1C.
+      \uD798\uC73C\uB85C \uC9C0\uB098\uAC00\uAE30 \uC804\uC5D0."
+    NextID: D3523
+  - ID: D3523
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uBB50\u2026 \uADF8\uB798\uC694. \uB2F9\uC2E0\uC774 \uACFC\uC5F0 \uAD34\uBB3C\uC744
+      \uC774\uAE38 \uC218 \uC788\uC744\uC9C4 \uBAA8\uB974\uACA0\uC9C0\uB9CC \uD574\uBCF4\uC2DC\uAE38."
+    NextID: D3524
+  - ID: D3524
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uBCD1\uC0AC. \uAE38\uC744 \uBE44\uCF1C \uC8FC\uC138\uC694.\_\_"
+    NextID: D3525
+  - ID: D3525
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uC608? \uC54C\uACA0\uC2B5\uB2C8\uB2E4."
+    NextID: D3526
+  - ID: D3526
+    SID: S3_5
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uCBE7. \uADF8\uB54C \uC8FD\uAC8C \uB458\uAC78 \uADF8\uB7AC\uB098."
+    NextID: D3527
+  - ID: D3527
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uCD0C\uC7A5\uB2D8, \uAD1C\uCC2E\uC744\uAE4C\uC694? \uAD1C\uD788 \uB140\uC11D\uC774
+      \uADF8 \uAD34\uBB3C\uC744 \uC790\uADF9\uD558\uBA74\u2026"
+    NextID: D3528
+  - ID: D3528
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uBB50 \uAD1C\uCC2E\uACA0\uC9C0\uC694."
+    NextID: D3529
+  - ID: D3529
+    SID: S3_5
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uC0B0\uAD70\uACFC \uAD34\uBB3C\uC774 \uC2F8\uC6CC\uC11C \uC0B0\uAD70\uC774
+      \uC774\uAE30\uBA74 \uACE8\uCE58\uAC70\uB9AC\uAC00 \uC0AC\uB77C\uC9C0\uB294\uAC70\uACE0,
+      \uC0B0\uAD70\uC774 \uC9C0\uB354\uB77C\uB3C4 \uADF8 \uAD34\uBB3C\uC774 \uD06C\uAC8C
+      \uB2E4\uCE58\uAC70\uB098 \uC9C0\uCCE4\uC744\uD14C\uB2C8 \uADF8\uB54C \uB098\uC11C\uC11C
+      \uAD34\uBB3C\uC744 \uC7A1\uC73C\uBA74 \uADF8\uB9CC\uC774\uB2C8."
+    NextID: D3530
+  - ID: D3530
+    SID: S3_5
+    Speaker: "\uBC29\uC704\uAD70 \uBCD1\uC0AC"
+    Dialogue: "\uACFC\uC5F0! \uADF8\uB807\uACA0\uAD70\uC694."
+    NextID: None
+  - ID: D3601
+    SID: S3_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C, \uB108\uAD6C\uB9AC? \uC800\uB7F0\uAC78 \uBCF4\uACE0
+      \uB35C\uB35C \uB5A4\uAC70\uC57C? \uD558\uC5EC\uAC04 \uC778\uAC04\uB4E4\uC740
+      \uB098\uC57D\uD558\uACE0 \uAC81\uB9CC \uB9CE\uB2E4\uB2C8\uAE4C."
+    NextID: D3602
+  - ID: D3602
+    SID: S3_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC804\uC5D0 \uBCF8 \uC18C\uBA38\uB9AC \uC694\uAD34\uBCF4\uB2E4 \uC57D\uD574\uBCF4\uC774\uB294\uB370\u2026
+      \uBB50 \uADF8\uB798\uBD10\uC57C \uB0B4 \uC0C1\uB300\uB294 \uC544\uB2C8\uC9C0!"
+    NextID: D3603
+  - ID: D3603
+    SID: S3_6
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uBCF4\uB2E4 \uC544\uAE4C \uCD0C\uC7A5 \uB140\uC11D\u2026 \uCBE7.
+      \uC774\uB798\uC11C \uC778\uAC04\uC740 \uBBFF\uC744\uAC8C \uBABB\uB41C\uB2E4\uB2C8\uAE4C."
+    NextID: None
+  - ID: D4101
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uC544! \uACE0\uC591\uC544 \uC5B4\uC11C\uC640!"
+    NextID: D4102
+  - ID: D4102
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uACE0\uC591\uC774\uAC00 \uC544\uB2C8\uB77C \uC0B0\uAD70\uB2D8\uC774\uB2E4!
+      \uC774\uC820 \uC544\uC608 \uD638\uB791\uB2D8 \uC774\uB77C\uACE0\uB3C4 \uC548\uD558\uB124?"
+    NextID: D4103
+  - ID: D4103
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uADF8\uB807\uC9C0\uB9CC \uD2F1\uD2F1 \uB300\uB294\uAC8C \uB531 \uACE0\uC591\uC774\uC778\uB370\u2026"
+    NextID: D4104
+  - ID: D4104
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC2DC\uB044\uB7EC. \uC774 \uBC24\uD1A8\uC544! \uADF8\uB798\uC11C
+      \uB10C \uC65C \uC9D1\uC5D0 \uC548 \uC788\uACE0 \uC5EC\uAE30\uC788\uB0D0?"
+    NextID: D4105
+  - ID: D4105
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uC55E\uC5D0 \uC5C4\uCCAD \uBB34\uC11C\uC6B4\uAC8C \uAE38\uC744 \uB9C9\uACE0\uC788\uC5B4\uC11C\u2026"
+    NextID: D4106
+  - ID: D4106
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uACE0\uC591\uC774\uAC00 \uC7A1\uC544\uC918!"
+    NextID: D4107
+  - ID: D4107
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB0B4\uAC00 \uB124 \uBCF4\uBAA8\uB0D0? \uB124\uAC00 \uC54C\uC544\uC11C
+      \uD574!"
+    NextID: D4108
+  - ID: D4108
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uACE0\uC591\uC544, \uD654\uB0AC\uC5B4?"
+    NextID: D4109
+  - ID: D4109
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB798. \uD654\uB0AC\uB2E4."
+    NextID: D4110
+  - ID: D4110
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uC65C?"
+    NextID: D4111
+  - ID: D4111
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC2DC\uB044\uB7EC. \uC54C\uC544\uC11C \uAC00\uB77C."
+    NextID: D4112
+  - ID: D4112
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uCD0C\uC7A5 \uD560\uC544\uBC84\uC9C0\uAC00 \uBB50\uB77C \uD588\uC5B4?"
+    NextID: D4113
+  - ID: D4113
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uADF8\uB798. \uADF8\uB534 \uB140\uC11D \uADF8\uB0E5 \uC8FD\uAC8C
+      \uB458\uAC78 \uADF8\uB7AC\uB294\uB370."
+    NextID: D4114
+  - ID: D4114
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uADF8\uB7EC\uBA74 \uC548\uB3FC \uACE0\uC591\uC544!"
+    NextID: D4115
+  - ID: D4115
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uACE0\uC591\uC774\uAC00 \uC544\uB2C8\u2026 \uD558\uC544. \uC544\uBB34\uD2BC
+      \uADF8\uB0E5 \uAC00\uB77C."
+    NextID: D4116
+  - ID: D4116
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uADF8\uB798\uB3C4\u2026 \uB3C4\uC640\uC8FC\uBA74 \uC548\uB3FC?"
+    NextID: D4117
+  - ID: D4117
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uD55C\uBC88\uB9CC \uB354 \uB3C4\uC640\uC918 \uACE0\uC591\uC544."
+    NextID: D4118
+  - ID: D4118
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uD558\u2026 \uACE0\uC591\uC774\uAC00 \uC544\uB2C8\uB77C\u2026"
+    NextID: D4119
+  - ID: D4119
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uC751. \uC0B0\uAD70\uB2D8. \uD55C\uBC88\uB9CC \uB354 \uB3C4\uC640\uC918.
+      \uC544\uB2C8\uBA74\u2026 \uBB34\uC11C\uC6CC?"
+    NextID: D4120
+  - ID: D4120
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50? \uD558! \uC544\uB2C8 \uBC24\uD1A8\uB9CC\uD55C\uAC8C \uD638\uB791\uC774\uB97C
+      \uBB58\uB85C\uBCF4\uACE0\u2026 \uC5EC\uAE30 \uC0B0\uC740 \uB0B4 \uAD6C\uC5ED\uC774\uC57C!
+      \uB204\uAC00 \uBB34\uC12D\uB2E4\uACE0!"
+    NextID: D4121
+  - ID: D4121
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uD558! \uC774 \uAF2C\uB9F9\uC774\uAC00\u2026 \uADF8\uB798!
+      \uB3C4\uC640\uC900\uB2E4 \uB3C4\uC640\uC918! \uC5B4\uB5A4 \uB188\uC774\uC57C?"
+    NextID: D4122
+  - ID: D4122
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uB369\uCE58\uAC00 \uC544\uC8FC \uD06C\uACE0! \uC5B4\u2026 \uCEE4\uB2E4\uB780
+      \uCE7C\uB3C4 \uD718\uB458\uB7EC! \uADF8\uB9AC\uACE0\u2026"
+    NextID: D4123
+  - ID: D4123
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB9AC\uACE0 \uBB50?"
+    NextID: D4124
+  - ID: D4124
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uCEE4\uB2E4\uB780 \uBAA8\uC790\uB97C \uD479 \uB20C\uB7EC\uC4F0\uACE0
+      \uBE68\uAC04 \uCE58\uB801\uCE58\uB801\uD55C \uC637\uC744 \uC785\uC5C8\uC5B4!"
+    NextID: D4125
+  - ID: D4125
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB9D0\uB9CC \uB4E4\uC73C\uBA74 \uADF8\uB188\uC774 \uC9C0\uAE08\uAE4C\uC9C0
+      \uC7A1\uC544\uC628 \uB188\uB4E4 \uB300\uC7A5\uC778\uAC70 \uAC19\uC740\uB370\u2026\_"
+    NextID: D4126
+  - ID: D4126
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uADF8\uB7FC \uC7A1\uC544\uC904 \uC218 \uC788\uC5B4?"
+    NextID: D4127
+  - ID: D4127
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uD765! \uB450\uACE0\uBD10. \uAE08\uBC29 \uC7A1\uC744\uAC70\uB2C8\uAE4C."
+    NextID: D4128
+  - ID: D4128
+    SID: S4_1
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uC751! \uAE30\uB300\uD560\uAC8C. \uC0B0\uAD70\uB2D8!"
+    NextID: None
+  - ID: D4129
+    SID: S4_1
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uD5E4.. \uD5E4\uD5E4, \uC0B0\uAD70\uB2D8. \uC774\uBC88\uC5D0\uB294
+      \uBB50 \uC0B4\uAC70\u2026 \uC5C6\uC5B4\uC694?"
+    NextID: D4130
+  - ID: D4130
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uB531\uD788 \uC5C6\uB294\uAC70\uAC19\uC740\uB370\u2026 \uAF2C\uB9F9\uC774
+      \uB188 \uB9D0\uB9CC \uB4E4\uC73C\uBA74 \uC388\uAC70\uAC19\uC740\uB370\u2026.
+      \uBB50 \uC88B\uC740\uAC70 \uC788\uC5B4?"
+    NextID: D4131
+  - ID: D4131
+    SID: S4_1
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uC544, \uC557! \uADF8 \uAD34\uBB3C \uC7A1...\uC73C\uB824\uACE0\uC694?"
+    NextID: D4132
+  - ID: D4132
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50. \uB108\uB3C4 \uB0B4\uAC00 \uC9C8\uAC70\uAC19\uC544?"
+    NextID: D4133
+  - ID: D4133
+    SID: S4_1
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uADF8, \uADF8\uB7F4\uB9AC\uAC00\uC694! \uD5E4.\uD5E4\uD5E4\uD5E4\u2026
+      \uC0B0\uAD70\uB2D8\uC774 \uADF8\uB3D9\uC548 \uC0AC\uC8FC\uC2E0\uAC8C \uB9CE\uC73C\uB2C8\uAE4C
+      \uC774\uBC88\uC5D0\uB294 \u314C..\uD2B9\uBCC4\uD788! \uC794\uB729 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
+    NextID: D4134
+  - ID: D4134
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uCBE7. \uADF8\uB7FC \uC880 \uC2F8\uAC8C \uC8FC\uB358\uAC00."
+    NextID: D4135
+  - ID: D4135
+    SID: S4_1
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uADF8..\uADF8\uB7F4\uC21C \uC5C6\uC5B4\uC694! \uC800\uB3C4 \uBA39\uACE0
+      \uC0B4\uC544\uC57C..\uC8E0! \uD5E4\uD5E4\uD5E4\u2026"
+    NextID: D4136
+  - ID: D4136
+    SID: S4_1
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uCBE7. \uC9E0\uB3CC\uC774\uB140\uC11D."
+    NextID: None
+  - ID: D4201
+    SID: S4_2
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uD788\uC57C, \uC9C4\uC9DC \uBE68\uAC04 \uC637\uC774\uB77C \uB208\uC5D0
+      \uC798 \uB744\uB124. \uBC24\uD1A8\uB140\uC11D \uB9D0\uB300\uB85C\uAD6C\uB9CC."
+    NextID: D4202
+  - ID: D4202
+    SID: S4_2
+    Speaker: "\uD788\uB2E4\uC624"
+    Dialogue: "\uC0C8\uB85C\uC6B4 \uBA39\uC787\uAC10\uC774 \uC654\uAD6C\uB098\u2026"
+    NextID: D4203
+  - ID: D4203
+    SID: S4_2
+    Speaker: "\uD788\uB2E4\uC624"
+    Dialogue: "\uC774\uBC88\uC5D0\uB294 \uAC81\uBA39\uC740 \uC0C8\uB07C \uACE0\uC591\uC774\uC778\uAC00?"
+    NextID: D4204
+  - ID: D4204
+    SID: S4_2
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50? \uB108 \uC784\uB9C8! \uAC70\uAE30 \uB531 \uAE30\uB2E4\uB824!
+      \uB0B4\uAC00 \uB124 \uB188 \uBA38\uB9AC\uB97C \uBD80\uC234\uBC84\uB9B4\uD14C\uB2C8\uAE4C!!"
+    NextID: D4205
+  - ID: D4205
+    SID: S4_2
+    Speaker: "\uD788\uB2E4\uC624"
+    Dialogue: "\uD750\uD750\uD750\u2026 \uC090\uC57D\uAC70\uB9AC\uB294 \uC18C\uB9AC\uAC00
+      \uC560\uB2EC\uD508\uAC78. \uD560 \uC218 \uC788\uB2E4\uBA74 \uD574\uBD10\uB77C."
+    NextID: None
+  - ID: D4206
+    SID: S4_2
+    Speaker: "\uD788\uB2E4\uC624"
+    Dialogue: "\uD558\uD558\uD558! \uAF64\uB098 \uBD84\uD22C\uD588\uC9C0\uB9CC\u2026
+      \uACB0\uAD6D \uC5EC\uAE30\uAE4C\uC9C0\uC778\uAC70 \uAC19\uC740\uB370?"
+    NextID: D4207
+  - ID: D4207
+    SID: S4_2
+    Speaker: "\uD788\uB2E4\uC624"
+    Dialogue: "\uC544\uBB34\uB9AC \uC560\uC368\uBD10\uC57C \uACB0\uAD6D\uC740 \uD328\uBC30\uD560\uD150\uB370,
+      \uADF8\uB0E5 \uC21C\uC21C\uD788 \uBAA9\uC744 \uB0B4\uBC00\uBA74 \uACE0\uD1B5\uC5C6\uC774
+      \uC8FD\uC5EC\uC8FC\uB9C8."
+    NextID: D4208
+  - ID: D4208
+    SID: S4_2
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC2DC\uB044\uB7EC\u2026! \uB204\uAC00 \uD328\uBC30\uD55C\uB2E4\uB294\uAC70\uB0D0!"
+    NextID: D4209
+  - ID: D4209
+    SID: S4_2
+    Speaker: "\uBCD1\uC0AC\uB4E4"
+    Dialogue: "\uC9C0\uAE08\uC774\uB2E4! \uB300\uD3EC \uC900\uBE44! \uBC29\uD3EC!"
+    NextID: D4210
+  - ID: D4210
+    SID: S4_2
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uACE0\uC591\uC544 \uD798\uB0B4!"
+    NextID: D4211
+  - ID: D4211
+    SID: S4_2
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\u314E..\uD788\uC774\uC775! \uB0B4\uAC00 \uC65C \uC628\uB2E4\uACE0
+      \uD574\uC11C\u2026 \uC0AC,\uC0AC\u2026 \uC0B0\uAD70\uB2D8! \uD798\uB0B4\uC138\uC694\u2026!!"
+    NextID: D4212
+  - ID: D4212
+    SID: S4_2
+    Speaker: "\uC758\uC0AC"
+    Dialogue: "\uC0B0\uAD70\uB2D8!\_ \uD798\uB0B4\uC2ED\uC1FC!! \uC5EC\uAE30 \uC774\uAC70
+      \uB4DC\uC2DC\uACE0 \uC800 \uB188 \uC4F0\uB7EC\uB728\uB9AC\uB294 \uAC81\uB2C8\uB2E4!"
+    NextID: D4213
+  - ID: D4213
+    SID: S4_2
+    Speaker: "\uD788\uB2E4\uC624"
+    Dialogue: "\uADF8\uB798\uBD10\uC57C \uC18C\uC6A9\uC5C6\uB2E4! \uB124\uB188\uC744
+      \uC8FD\uC774\uACE0 \uB098\uC57D\uD55C \uAC83\uB4E4\uB3C4 \uC804\uBD80 \uC8FD\uC5EC\uC8FC\uB9C8!!"
+    NextID: D4214
+  - ID: D4214
+    SID: S4_2
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB807\uAC8C\uB294 \uC548\uB420\uAEC4! \uB124 \uB140\uC11D\uC740
+      \uC5EC\uAE30\uC11C \uC8FD\uC744\uD14C\uB2C8\uAE4C \uB9D0\uC774\uC9C0!"
+    NextID: None
+  - ID: D4301
+    SID: S4_3
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uACE0\uC0DD\uD588\uC5B4 \uACE0\uC591\uC544!"
+    NextID: D4302
+  - ID: D4302
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uD558\u2026 \uB610 \uACE0\uC591\uC774\u2026 \uC544\uB2C8\uB2E4. \uADF8\uB798\uC11C
+      \uC774\uC81C \uC9D1\uC5D0 \uAC00\uB294\uAC70\uB0D0, \uAF2C\uB9F9\uC544?"
+    NextID: D4303
+  - ID: D4303
+    SID: S4_3
+    Speaker: "\uC18C\uB140"
+    Dialogue: "\uAC08\uAC70\uC57C! \u2026\uC870\uAE08 \uC774\uB530\uAC00?"
+    NextID: D4304
+  - ID: D4304
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uADF8\uB798\uADF8\uB798\u2026"
+    NextID: D4305
+  - ID: D4305
+    SID: S4_3
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uC0AC, \uC0B0\uAD70\uB2D8.\uACE0\uC0DD \uD558\uC168\uC5B4\uC694!"
+    NextID: D4306
+  - ID: D4306
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uC57C, \uB9D0 \uB35C \uB5A0\uB124?"
+    NextID: D4307
+  - ID: D4307
+    SID: S4_3
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\u3147..\uC73C\uD5E4\uD5E4\u2026 \uC544\uAE4C \uADF8 \uB140\uC11D\uBCF4\uB2E4\uB294
+      \uB098\uC544\uC11C\u2026"
+    NextID: D4308
+  - ID: D4308
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC544~ \uB0B4\uAC00 \uADF8\uB140\uC11D\uBCF4\uB2E4 \uC57D\uD558\uB2E4?"
+    NextID: D4309
+  - ID: D4309
+    SID: S4_3
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uADF8, \uADF8\uB7F4\uB9AC\uAC00\uC694! \uC0B0\uAD70\uB2D8\uC774\uC57C
+      \uB9D0\uB85C \uC774 \uC0B0\uC758 \uC655! \uCD5C\uACE0! \uC785\uB2C8\uB2E4!"
+    NextID: D4310
+  - ID: D4310
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC5D0\uD734\u2026 \uAD6C\uBBF8\uD638\uB77C\uB294\uAC8C \uC774\uB798\uC11C\uC57C\u2026"
+    NextID: D4311
+  - ID: D4311
+    SID: S4_3
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\u3147..\uC704\uC5C4\uC774 \uBC25 \uBA39\uC5EC\uC8FC\uB294\uAC83\uB3C4
+      \uC544\uB2C8\uACE0\u2026"
+    NextID: D4312
+  - ID: D4312
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBB50\uB77C\uACE0?"
+    NextID: D4313
+  - ID: D4313
+    SID: S4_3
+    Speaker: "\uAD6C\uBBF8\uD638"
+    Dialogue: "\uC544, \uC544\uB2C8\uC5D0\uC694!"
+    NextID: D4314
+  - ID: D4314
+    SID: S4_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uD558\uD558! \uC0B0\uAD70\uB2D8, \uBB34\uC0AC\uD558\uC2DC\uAD70\uC694?"
+    NextID: D4315
+  - ID: D4315
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uADF8\uB798"
+    NextID: D4316
+  - ID: D4316
+    SID: S4_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uD760\uD760. \uC544\uAE4C \uC77C\uC740 \uC8C4\uC1A1\uD569\uB2C8\uB2E4.
+      \uC0B0\uAD70\uB2D8. \uC774\uB807\uAC8C  \uC0AC\uACFC \uB4DC\uB9B4\uD14C\uB2C8,
+      \uC6A9\uC11C\uD574 \uC8FC\uC2ED\uC0AC \uD569\uB2C8\uB2E4..."
+    NextID: D4317
+  - ID: D4317
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uD558\uC544\u2026 \uADF8\uB798. \uADF8\uBCF4\uB2E4 \uBB34\uC2A8 \uC77C\uC778\uB370?"
+    NextID: D4318
+  - ID: D4318
+    SID: S4_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uB2E4\uB984\uC774 \uC544\uB2C8\uC635\uACE0, \uC774 \uC0B0\uC5D0\uC11C
+      \uACC4\uC18D \uC0B4\uC544\uB3C4 \uB420\uC9C0\u2026"
+    NextID: D4319
+  - ID: D4319
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uCBE7. \uADF8\uB798\uB77C. \uC5B4\uC9DC\uD53C \uB2E4\uB978
+      \uACF3\uC73C\uB85C \uAC00\uBD24\uC790\u2026 \uB2E4\uB978 \uB188\uB4E4\uC774
+      \uAE30\uC5B4\uB4E4\uC5B4\uC62C\uAC70 \uAC19\uC73C\uB2C8\u2026"
+    NextID: D4320
+  - ID: D4320
+    SID: S4_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uD558\uD558! \uAC10\uC0AC\uD569\uB2C8\uB2E4!"
+    NextID: D4321
+  - ID: D4321
+    SID: S4_3
+    Speaker: "\uC758\uC0AC"
+    Dialogue: "\uC0B0\uAD70\uB2D8, \uBAB8\uC740 \uAD1C\uCC2E\uC73C\uC2E0\uC9C0\uC694?"
+    NextID: D4322
+  - ID: D4322
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\u2026\uC544 \uAD1C\uCC2E\uC740\uB370. \uADF8 \uC57D \uB9DB\uC5C6\uB354\uB77C."
+    NextID: D4323
+  - ID: D4323
+    SID: S4_3
+    Speaker: "\uC758\uC0AC"
+    Dialogue: "\uBCF8\uB798 \uC57D\uC740 \uBAB8\uC5D0 \uC88B\uC744\uC218\uB85D \uC4F4\uBC95\uC774\uB2C8\uAE4C\uC694."
+    NextID: D4324
+  - ID: D4324
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB2E4\uC74C\uC5D4 \uC880 \uB354 \uB9DB\uC788\uAC8C \uB9CC\uB4E4\uC5B4."
+    NextID: D4325
+  - ID: D4325
+    SID: S4_3
+    Speaker: "\uC758\uC0AC"
+    Dialogue: "\uC608? \uC608, \uADF8\uB798\uBCF4\uC9C0\uC694."
+    NextID: D4326
+  - ID: D4326
+    SID: S4_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uADF8\uB7FC \uC774\uC81C \uC0B0\uAD70\uB2D8\uC740 \uBB34\uC5C7\uC744
+      \uD558\uC2E4\uAC74\uC9C0\uC694?"
+    NextID: D4327
+  - ID: D4327
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uBAB8\uD480\uC774\uB3C4 \uD588\uACE0\u2026 \uC774\uB9AC\uC800\uB9AC
+      \uB3CC\uC544\uB2E4\uB154\uC73C\uB2C8\uAE4C \uB2E4\uC2DC \uC9D1\uC73C\uB85C
+      \uB3CC\uC544\uAC00\uC11C \uC798\uAC70\uB2E4."
+    NextID: D4328
+  - ID: D4328
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uB098 \uAE68\uC6B0\uC9C0 \uB9D0\uACE0, \uC774\uC81C \uC804\uBD80
+      \uAC00."
+    NextID: D4329
+  - ID: D4329
+    SID: S4_3
+    Speaker: "\uCD0C\uC7A5"
+    Dialogue: "\uC798\uC790 \uACE0\uC591\uC544! \uB180\uB7EC \uAC08\uAC8C!"
+    NextID: D4330
+  - ID: D4330
+    SID: S4_3
+    Speaker: "\uC0B0\uAD70"
+    Dialogue: "\uC640 \uBD24\uC790 \uC790\uB294\uAC70\uBC16\uC5D0 \uBABB\uBCFC\uAC70\uB2E4.
+      \uBC24\uD1A8\uB140\uC11D, \uC798 \uC788\uC5B4\uB77C."
+    NextID: None
