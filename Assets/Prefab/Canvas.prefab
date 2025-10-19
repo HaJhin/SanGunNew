@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1072879248680856878}
   - component: {fileID: 3188490563417664152}
   - component: {fileID: 4165357351256744891}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: FadeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 9099318977000506599}
   - component: {fileID: 526146283816045883}
   - component: {fileID: 3318962145688050278}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

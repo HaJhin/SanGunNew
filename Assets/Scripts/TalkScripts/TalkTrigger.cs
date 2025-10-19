@@ -35,13 +35,13 @@ public class TalkTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerHitbox"))
             Debug.Log("대화 가능");
             isPlayerInRange = true;
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerHitbox"))
             Debug.Log("대화가능상태 해제");
             isPlayerInRange = false;
     } 

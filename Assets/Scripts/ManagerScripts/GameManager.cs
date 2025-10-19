@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public HUDUI HUDUI;
     public HPUI HPUI;
     public ShieldUI ShieldUI;
-   //  public  ShieldUI;
+
     public bool GameOver = false;
 
     [Header("stats")]
@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         ShieldUI.Init(maxShield);
         HPUI.setHP(HP);
         ShieldUI.SetShield(shield);
+
+        HUDUI.UpdateGold(Gold);
     } // Start ed
 
     public bool IsFull(){if (HP == MaxHP) return true; else return false;} // 체력 최대치 확인
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour
     public void SpendGold(int amount) // 골드 소비
     {
         Gold = Mathf.Max(0, Gold - amount);
+        HUDUI.UpdateGold(Gold);
     } // SpendGold ed
 
 } // ed 

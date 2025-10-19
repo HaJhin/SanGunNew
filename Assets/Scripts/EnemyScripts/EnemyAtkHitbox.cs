@@ -12,7 +12,7 @@ public class EnemyAtkHitbox : MonoBehaviour
     {
         if (hit.gameObject.tag == "Player")
         {
-            PlayerCon player = hit.gameObject.GetComponent<PlayerCon>();
+            Player player = hit.gameObject.GetComponent<Player>();
             GameManager GM = GetComponent<GameManager>();   
 
             if (player != null)

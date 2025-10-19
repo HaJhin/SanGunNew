@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PAE : MonoBehaviour
 {
-    public PlayerCon player;
+    // Player Attack Event = PAE
+
+    // public PlayerCon player;
+    public Player player;
     public GameObject[] skillColliders;
 
     public void ActiveSkillCollider(int idx)
@@ -19,6 +22,6 @@ public class PAE : MonoBehaviour
 
     public void CanMove()
     {
-        player.Canmove();
+        player.CanMove(); // 부모의 메서드 실행
     }
 }
