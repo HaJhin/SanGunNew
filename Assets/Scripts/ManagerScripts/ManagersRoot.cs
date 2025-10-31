@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ManagersRoot : MonoBehaviour
 {
-    private static ManagersRoot instance;
+    public static ManagersRoot instance;
 
     private void Awake()
     {

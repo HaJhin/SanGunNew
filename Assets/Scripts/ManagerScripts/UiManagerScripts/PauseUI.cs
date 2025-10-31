@@ -22,19 +22,15 @@ public class PauseUI : MonoBehaviour
 
     void Pause()
     {
-        pauseUI.SetActive(true); // UI 활성화
-        Time.timeScale = 0f; // 시간 정지
-        Cursor.visible = true; // 커서 표시
-        Cursor.lockState = CursorLockMode.None;
         isPaused = true;
+        pauseUI.SetActive(true); // UI 활성화
+        GameManager.Instance.SetPause(isPaused);
     }
 
     void Resume()
     {
-        pauseUI.SetActive(false); // UI 비활성화
-        Time.timeScale = 1.0f; // 시간 복구
-        Cursor.visible = false; // 커서 숨김
-        Cursor.lockState = CursorLockMode.Locked;
         isPaused = false;
+        pauseUI.SetActive(false); // UI 비활성화
+        GameManager.Instance.SetPause(isPaused);
     }
 }

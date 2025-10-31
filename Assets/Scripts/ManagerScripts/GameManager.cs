@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public HPUI HPUI;
     public ShieldUI ShieldUI;
 
+    public bool pauseNow = false;
+
     public bool GameOver = false;
 
     [Header("stats")]
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour
     public int maxShield = 5;
     public int shield;
     public int atk = 5;
+    public int maxComboCount = 1;
+    public bool dashAtk = false;
 
     [Header("point")]
     public int Gold = 0;
@@ -50,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage(int dmg) // 체력 or 쉴드 감소
     {
+        DamageOverlay.instance.ShowHitEffect();
+        Debug.Log("산군 데미지!");
         if (shield > 0)
         {
             shield = Mathf.Clamp(shield - dmg, 0, maxShield);
@@ -94,5 +100,23 @@ public class GameManager : MonoBehaviour
         Gold = Mathf.Max(0, Gold - amount);
         HUDUI.UpdateGold(Gold);
     } // SpendGold ed
+
+    public void SetPause(bool pause)
+    {
+        if (pause)
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            pauseNow = true;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            pauseNow = false;
+        }
+    } // SetPause ed
 
 } // ed 

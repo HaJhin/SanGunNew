@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - PlayerHitbox
+  - Projectile
+  - Fade
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Enemy
   - stop
   - Hitbox
-  - 
+  - Projectile
   - 
   - 
   - 

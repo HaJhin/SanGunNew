@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Start.unity
+    path: Assets/Scenes/UIImage/Start.unity
     guid: a563c08722e7b7849867e10cef83809a
   - enabled: 1
     path: Assets/Scenes/S1/S1_1.unity
@@ -16,17 +16,59 @@ EditorBuildSettings:
     guid: 81e813e6c8b3e5d4d973cc0ee04780a5
   - enabled: 1
     path: Assets/Scenes/S1/S1_3.unity
-    guid: 0880f4be42db17747a4970fb63513a7b
+    guid: b533a4fcf66e8a143855b091ece9bd22
   - enabled: 1
     path: Assets/Scenes/S1/S1_4.unity
-    guid: cb15a8cfc87c11a4e8d406dbc9b0806e
+    guid: 38ccfa704c800094395044a8b83fc0bf
   - enabled: 1
     path: Assets/Scenes/S1/S1_5.unity
-    guid: 221c6a597a8d00149a0e45505b8da5d2
+    guid: abbac332848ff9d46ae9f32f05179d56
   - enabled: 1
     path: Assets/Scenes/S1/S1_6.unity
-    guid: 3dd20d1c848faa441ac2e77d1611003a
+    guid: 0a740338dfa4ab44db4482de42751ee2
   - enabled: 1
     path: Assets/Scenes/S2/S2_1.unity
-    guid: 552030ece362a2e4894ffb11c72743ba
+    guid: 095428c3ca5b79f40a5960b42fefc032
+  - enabled: 1
+    path: Assets/Scenes/S2/S2_2.unity
+    guid: 115766aaf1e658742a73c48f25c7c856
+  - enabled: 1
+    path: Assets/Scenes/S2/S2_3.unity
+    guid: a265bf00f4dd7b54c9aa2f27d1db8b34
+  - enabled: 1
+    path: Assets/Scenes/S2/S2_4.unity
+    guid: 903f277904414894aa9db8971ff426d0
+  - enabled: 1
+    path: Assets/Scenes/S2/S2_5.unity
+    guid: 5cbb0a3f5e1f1e3458449946385c21a5
+  - enabled: 1
+    path: Assets/Scenes/S2/S2_B.unity
+    guid: 8093f22551e2f1a48861c9018d705ad1
+  - enabled: 1
+    path: Assets/Scenes/S3/S3_1.unity
+    guid: ff76078639401424e820a4b5d272ddc6
+  - enabled: 1
+    path: Assets/Scenes/S3/S3_2.unity
+    guid: 879ae5abb0a24244f96f0fbdcfa8dcf7
+  - enabled: 1
+    path: Assets/Scenes/S3/S3_3.unity
+    guid: 03e9223b8f5db5c4696da546f68b9118
+  - enabled: 1
+    path: Assets/Scenes/S3/S3_4.unity
+    guid: b25b997b04eaf9a4fbb314b2ea424add
+  - enabled: 1
+    path: Assets/Scenes/S3/S3_5.unity
+    guid: 9fb57ac1885418d41bfe894cf71e210e
+  - enabled: 1
+    path: Assets/Scenes/S4/S4_1.unity
+    guid: fbbd92ecc8202104d9b0d01110b52053
+  - enabled: 1
+    path: Assets/Scenes/S4/S4_B.unity
+    guid: 9ff7e32aebaa8ab4691f0f30a12bac8f
+  - enabled: 1
+    path: Assets/Scenes/S4/S4_E.unity
+    guid: d66a6430a471adc41a8b18ec48d66188
+  - enabled: 1
+    path: Assets/Scenes/UIImage/Ending.unity
+    guid: 7ddf598d4b19f1b4c8ca6e1378dcc870
   m_configObjects: {}

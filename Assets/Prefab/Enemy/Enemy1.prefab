@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6655393966462164149}
   - component: {fileID: 1567942689750983394}
   - component: {fileID: 1373055704211607747}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: atkHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6521904289075969612
 Transform:
   m_ObjectHideFlags: 0

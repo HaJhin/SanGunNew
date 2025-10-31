@@ -24,4 +24,14 @@ public class PAE : MonoBehaviour
     {
         player.CanMove(); // 부모의 메서드 실행
     }
+
+    public void ReturnIdle()
+    {
+        player.ReturnIdle(); // 부모의 메서드 실행
+    }
+
+    public void DashZero()
+    {
+        player.DashZero(); // 부모의 메서드 실행
+    }
 }

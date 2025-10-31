@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TalkManager : MonoBehaviour
 {
-    [SerializeField] private TalkLog talkLog;
+    [SerializeField] private TalkLog2 talkLog;
     [SerializeField] private GameObject dialoguePanel; // 대화창
     [SerializeField] private Text speakerText; // 화자
     [SerializeField] private Text dialogueText; // 내용

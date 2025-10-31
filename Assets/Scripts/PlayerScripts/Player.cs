@@ -9,20 +9,21 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     [Header("Movement Settings")]
-    public float moveSpeed = 1.5f; // 이동속도
+    public float moveSpeed = 2f; // 이동속도
     private Vector3 moveInput; // 이동방향
+    float fixedY;
 
     [Header("Dash Settings")]
-    public float dashSpeed = 4f; // 대쉬속도
-    public float dashDuration = 0.25f; // 대쉬지속시간
+    private float dashSpeed = 3.5f; // 대쉬속도
+    private float dashDuration = 0.4f; // 대쉬지속시간
     private Vector3 dashDirection; // 대쉬방향
     private float dashTimer; // 대쉬쿨타임
 
-    public bool DashAtk = false; // 대시공격 가능 여부
+    public bool dashAtk; // 대시공격 가능 여부
 
     [Header("Attack Settings")]
     public GameObject[] skillColliders; // 공격 히트박스
-    public int maxComboLevel = 1; // 현재 콤보 레벨(1~3)
+    public int maxComboLevel; // 현재 콤보 레벨(1~3)
     public int currentCombo = 0; // 현재 콤보 카운트
     public float comboResetTime = 0.8f; // 콤보 초기화 시간
     private float comboTimer; // 콤보 타이머
@@ -45,11 +46,18 @@ public class Player : MonoBehaviour
         Instance = this;
 
         rb = GetComponent<Rigidbody>();
+        fixedY = rb.position.y;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         playerCollider = GetComponentInChildren<Collider>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     } // Awake ed
 
+    private void Start()
+    {
+        OnApplicationFocus(true);
+    }
     private void Update() // 메인 루프
     {
         if (currentState == PlayerState.Dead) return;
@@ -62,9 +70,18 @@ public class Player : MonoBehaviour
             return;
         } // 게임오버 처리
 
-        HandleInput();
-        HandleState();
+        if (!GameManager.Instance.pauseNow)
+        {
+            HandleInput();
+            HandleState();
+        }
+        else
+        {
+            ChangeState(PlayerState.idle);
+            return;
+        }
 
+        maxComboLevel = GameManager.Instance.maxComboCount;
         // 콤보 타이머 갱신
         if (currentCombo > 0)
         {
@@ -151,6 +168,9 @@ public class Player : MonoBehaviour
             ChangeState(PlayerState.idle);
             return;
         }
+        Vector3 targetPos = rb.position + moveInput * moveSpeed * Time.deltaTime;
+        targetPos.y = fixedY; // ← Y값 고정! 중요
+
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.deltaTime); // 이동(rb기반)
         // 방향 전환
         if (moveInput.x != 0)
@@ -212,6 +232,8 @@ public class Player : MonoBehaviour
     public void ActiveSkillCollider(int idx) => skillColliders[idx].SetActive(true);
     public void InactiveSkillCollider(int idx) => skillColliders[idx].SetActive(false);
     public void CanMove() {if (currentState == PlayerState.Atk) ChangeState(PlayerState.idle);}
+    public void ReturnIdle(){ChangeState(PlayerState.idle);}
+    public void DashZero() { dashDirection = Vector3.zero; rb.velocity = Vector3.zero; }
 
     // 커서 숨기기
     private void OnApplicationFocus(bool focus){Cursor.lockState = focus ? CursorLockMode.Locked : CursorLockMode.None;}

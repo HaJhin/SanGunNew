@@ -383,8 +383,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   dashSpeed: 4
-  dashDuration: 0.25
-  DashAtk: 0
+  dashDuration: 1
+  dashAtk: 0
   skillColliders:
   - {fileID: 6909769895040315601}
   maxComboLevel: 1
@@ -446,7 +446,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.66, z: 0.27}
+  m_Size: {x: 0.4, y: 0.66, z: 0.15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1688802903582564007
 Rigidbody:

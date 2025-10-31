@@ -6,7 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class TitleUI : MonoBehaviour
 {
-   
+
+    private void Start()
+    {
+        if (ManagersRoot.instance != null)
+        {
+            Destroy(ManagersRoot.instance.gameObject);
+        }
+    }
+
     public void OnClickStart()
     {
         SceneManager.LoadScene("S1_1");

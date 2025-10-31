@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6710991628834360320}
   - component: {fileID: 5813070760528590438}
   - component: {fileID: 806229380668046067}
-  - component: {fileID: 6287825799203581817}
   - component: {fileID: 656889056302714514}
+  - component: {fileID: 3414980266962970377}
   m_Layer: 0
   m_Name: NPC-Ninetaile
   m_TagString: Untagged
@@ -110,23 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6287825799203581817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3635433219652658755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5bfc73c2458d143a906fc13731aadf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopUI: {fileID: 0}
-  canBuy: {fileID: 8231171016542738797}
-  isPlayerInRange: 0
-  itemName: {fileID: 0}
-  itemPrice: {fileID: 0}
 --- !u!65 &656889056302714514
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -148,6 +131,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7, y: 0.3, z: 5}
   m_Center: {x: 0, y: -1.2, z: 0}
+--- !u!114 &3414980266962970377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635433219652658755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c2679b5c2800c458d2ccd99db3eba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBuy: {fileID: 8231171016542738797}
+  isPlayerInRange: 0
 --- !u!1 &7744716923856706820
 GameObject:
   m_ObjectHideFlags: 0

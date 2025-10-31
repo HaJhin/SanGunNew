@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,7 @@ public class Shop : MonoBehaviour
     public static Shop Instance;
 
     public GameObject shopUI;
-    public GameObject canBuy;
-    public bool isPlayerInRange = false;
-
+    
     [Header("UI elements")]
     public Text itemName;
     public Text itemPrice;
@@ -20,67 +19,18 @@ public class Shop : MonoBehaviour
     private string currentItem;
     private int currentPrice;
 
+    private bool isOpen = false;
+
     private void Awake()
     {
         Instance = this;
-        // buyBtn.onClick.AddListener();
     }
 
     private void Start()
     {
         if (shopUI != null)
-            shopUI.SetActive(false); // 시작할 때는 닫혀있음
-        if (canBuy != null)
-            canBuy.SetActive(false);
+            shopUI.SetActive(isOpen); // 시작할 때는 닫혀있음
     }
-
-    private void Update()
-    {
-        if (isPlayerInRange && Input.GetKeyUp(KeyCode.E))
-        {
-            ToggleShop();
-        } // if ed
-    } // Update ed
-
-    private void ToggleShop() // 상점 껐다 키기
-    {
-        if (shopUI != null)
-        {
-            bool isActive = shopUI.activeSelf;
-            shopUI.SetActive(!isActive);
-            if (isActive ) 
-            {
-                Time.timeScale = 1f;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            } else 
-            {
-                Time.timeScale = 0f;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-        } // if ed
-    } // ToggleShop ed
-
-    private void OnTriggerEnter(Collider other) // 상점 활성화 인식
-    {
-        if (other.CompareTag("PlayerHitbox"))
-        {
-            isPlayerInRange = true;
-            canBuy.SetActive(isPlayerInRange);
-            Debug.Log("상점 이용 가능");
-        }
-    } // OTEnter ed
-
-    private void OnTriggerExit(Collider other) // 상점 비활성화 인식
-    {
-        if (other.CompareTag("PlayerHitbox"))
-        {
-            isPlayerInRange = false;
-            canBuy.SetActive(isPlayerInRange);
-            Debug.Log("상점 범위 이탈");
-        }
-    } // OTExit ed
 
     public void ShowItemInfo(string name,int price,int ID) // 쇼 아이템 인포
     {
@@ -92,7 +42,7 @@ public class Shop : MonoBehaviour
         itemPrice.text = price.ToString();
     }
 
-    public void OnBuyBtnClicked()
+    public void OnBuyBtnClicked() // 구매버튼 클릭
     {
         int playerGold = GameManager.Instance.Gold;
 
@@ -105,24 +55,26 @@ public class Shop : MonoBehaviour
         {
             Debug.Log("골드 부족. 구매 실패...");
         }
-    } // OnBuyBtnClicked ed
+    } // OnBuyBtnClicked ed 
 
-    private void ApplyItem(int ID)
+    private void ApplyItem(int ID) // 아이템 추가
     {
         switch (ID) 
         {
             case 1:
-                if (Player.Instance.maxComboLevel < 3) 
+                if (GameManager.Instance.maxComboCount < 3) 
                 {
-                    Player.Instance.maxComboLevel += 1; 
-                } else { return; }
+                    GameManager.Instance.maxComboCount += 1;
+                    GameManager.Instance.atk += 3;
+
+                } else { Debug.Log("콤보 레벨 최대!");  return; }
                 break;
             case 2:
-                if (!Player.Instance.DashAtk)
+                if (!GameManager.Instance.dashAtk)
                 {
-                    Player.Instance.DashAtk = true;
+                    GameManager.Instance.dashAtk = true;
                 }
-                else { return; }
+                else { Debug.Log("대시어택 이미 활성화!"); return; }
                 break;
             case 3:
                 Inventory.Instance.AddItem(ItemType.Heal);
@@ -131,5 +83,20 @@ public class Shop : MonoBehaviour
                 Inventory.Instance.AddItem(ItemType.Shield);
                 break;
         }
+    }
+
+    public void ToggleShop() {if (isOpen) CloseShop(); else OpenShop();}
+
+    public void OpenShop()
+    {
+        shopUI.SetActive(true);
+        isOpen = true;
+        GameManager.Instance.SetPause(true); // 시간 정지 요청
+    }
+    public void CloseShop()
+    {
+        shopUI.SetActive(false);
+        isOpen = false;
+        GameManager.Instance.SetPause(false); // 시간 재개 요청
     }
 } // class ed

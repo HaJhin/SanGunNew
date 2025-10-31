@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class EnemyAtkHitbox : MonoBehaviour
 {
-    public int damage = 1;
+    public int damage;
     
-
     private void OnTriggerEnter(Collider hit)
     {
         if (hit.gameObject.tag == "Player")
