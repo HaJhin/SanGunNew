@@ -11,6 +11,8 @@ public class RangeProjectile : MonoBehaviour
     public float angle = 45f; // 발사각
     private Rigidbody rb;
 
+    public GameObject prjEffect;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,11 +43,26 @@ public class RangeProjectile : MonoBehaviour
 
             if (player != null)
             {
+                PrjEffect();
                 Destroy(gameObject);
                 GameManager.Instance.TakeDamage(damage);
                 Debug.Log("플레이어 데미지! 남은체력 : " + GameManager.Instance.HP);
                 player.animator.Play("Player_damage");
             }
-        } else {Destroy(gameObject);}
+        } else 
+        {
+            PrjEffect();
+            Destroy(gameObject);
+        }
     } // OTE ed
+
+    private void PrjEffect()
+    {
+        if (prjEffect != null)
+        {
+            GameObject vfx = Instantiate(prjEffect, transform.position, Quaternion.identity);
+            Destroy(vfx, 1f);
+        }
+    } // PrjEffect ed
+
 } // RangeProjectile ED

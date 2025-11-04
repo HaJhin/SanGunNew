@@ -153,6 +153,7 @@ MonoBehaviour:
   canAtk: 1
   projectile: {fileID: 1873016063737856037, guid: 8334f15c3a3094745b62e7ccbe01ee3f, type: 3}
   firePoint: {fileID: 1488722301446478959}
+  bleedingEffect: {fileID: 6823200998282874702, guid: 663fe25bbe7bdaa4cbf72ed1ae73031f, type: 3}
 --- !u!1 &4293486423576217481
 GameObject:
   m_ObjectHideFlags: 0

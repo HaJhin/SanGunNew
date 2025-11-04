@@ -16,8 +16,11 @@ public class AssaultEnemy : MonoBehaviour, EnemyDamage
     public float currentCycle = 0f;
 
     public bool canAtk = true;
+
     public GameObject atkCollider;
     public Transform hitbox;
+    public GameObject bleedingEffect;
+
 
     private Transform player;
     private Animator anim;
@@ -153,13 +156,23 @@ public class AssaultEnemy : MonoBehaviour, EnemyDamage
 
     public void TakeDamage(int damage) // 데미지 스크립트
     {
+        BleedingEffect();
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0) {
             anim.Play("Enemy1_die"); // 사망 모션 재생
-            GameManager.Instance.AddGold(Random.Range(1, 6)); // 재화 지급, 1~5 사이 랜덤.
+            GameManager.Instance.AddGold(Random.Range(3,9)); // 재화 지급, 3~8 사이 랜덤.
             Debug.Log("골드 지급!");
         }
         else { anim.Play("Enemy1_damage"); } // 아닐 시 데미지
         Debug.Log("데미지! 남은 체력 : " + HP);
-    }
+    } // TakeDamage ed
+
+    private void BleedingEffect()
+    {
+        if (bleedingEffect != null)
+        {
+            GameObject vfx = Instantiate(bleedingEffect,transform.position, Quaternion.identity);
+            Destroy(vfx, 1f);
+        }
+    } // BleedingEffect ed
 }

@@ -33,7 +33,8 @@ public class Hidao : MonoBehaviour,EnemyDamage
     private Transform player;
     private Animator animator;
     private SpriteRenderer sr;
-    
+    public GameObject bleedingEffect;
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -198,6 +199,7 @@ public class Hidao : MonoBehaviour,EnemyDamage
 
     public void TakeDamage(int damage) // 데미지 스크립트
     {
+        BleedingEffect();
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0)
         {
@@ -210,7 +212,14 @@ public class Hidao : MonoBehaviour,EnemyDamage
             Debug.Log("데미지! 히다오 남은 체력 : " + HP);
         }
     }
-
+    private void BleedingEffect()
+    {
+        if (bleedingEffect != null)
+        {
+            GameObject vfx = Instantiate(bleedingEffect, transform.position, Quaternion.identity);
+            Destroy(vfx, 1f);
+        }
+    } // BleedingEffect ed
     private void FacingPlayer() // 플레이어 바라보기
     {
         if (lockFacing) return;

@@ -153,3 +153,4 @@ MonoBehaviour:
   projectileSpeed: 3
   lifeTime: 3
   angle: 45
+  prjEffect: {fileID: 1429954232896169633, guid: fa852cc3937723a47a275b8e82bc832d, type: 3}

@@ -8,8 +8,10 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
     // 상태 관련
     public enum State { Idle, Chase, Attack, Die }
     State currentState = State.Idle;
+
     private Animator anim;
     private SpriteRenderer spriteRenderer;
+    
 
     [Header("Stats")]
     public int HP = 15; // 체력
@@ -27,7 +29,7 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
 
     [Header("References")]
     private Transform player; // 플레이어의 위치
-    
+    public GameObject bleedingEffect;
 
     private void Awake()
     {
@@ -124,6 +126,7 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
 
     public void TakeDamage(int damage) // 데미지 스크립트
     {
+        BleedingEffect();
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0)
         {
@@ -139,4 +142,12 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
         
         Debug.Log("데미지! 남은 체력 : " + HP);
     }
+    private void BleedingEffect()
+    {
+        if (bleedingEffect != null)
+        {
+            GameObject vfx = Instantiate(bleedingEffect, transform.position, Quaternion.identity);
+            Destroy(vfx, 1f);
+        }
+    } // BleedingEffect ed
 }

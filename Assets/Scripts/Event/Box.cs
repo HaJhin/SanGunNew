@@ -50,5 +50,6 @@ public class Box : MonoBehaviour
     private void BoxOpen()
     {
         isOpen = true;
+        GameManager.Instance.AddGold(50);
     }
 }

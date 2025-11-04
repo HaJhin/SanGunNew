@@ -467,6 +467,9 @@ MonoBehaviour:
   - {fileID: 4410805544705431790}
   - {fileID: 6881775716971529371}
   healthSlider: {fileID: 1218993546848246472}
+  bleedingEffect: {fileID: 6823200998282874702, guid: 87901896a97481f4c859eaaedee43d9d, type: 3}
+  dustPrefab: {fileID: 0}
+  dustSpawnPoint: {fileID: 0}
 --- !u!1 &3106513203747099193
 GameObject:
   m_ObjectHideFlags: 0

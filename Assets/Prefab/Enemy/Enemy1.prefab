@@ -306,3 +306,4 @@ MonoBehaviour:
   canAtk: 1
   atkCollider: {fileID: 4667370858375018786}
   hitbox: {fileID: 6655393966462164149}
+  bleedingEffect: {fileID: 6823200998282874702, guid: 663fe25bbe7bdaa4cbf72ed1ae73031f, type: 3}

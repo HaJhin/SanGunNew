@@ -313,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeController: {fileID: 0}
   nextSceneName: S3_1
+  flagName: Ending
 --- !u!65 &602665305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -759,7 +760,8 @@ PrefabInstance:
       value: Gyuki
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 666833399542918801, guid: fd33fd4f33b41744bb9fd377c054a7bf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd33fd4f33b41744bb9fd377c054a7bf, type: 3}

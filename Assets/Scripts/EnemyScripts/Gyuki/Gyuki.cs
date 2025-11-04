@@ -28,42 +28,24 @@ public class Gyuki : MonoBehaviour , EnemyDamage
     private Animator animator;
     public GameObject[] atkColliders;
 
-    [Header("Sprite Color")]
-    private SpriteRenderer sr;
-    private Color originalColor;
-    private Color flashColor;
-    private string flashHexColor = "FFB8B8";
-
-    [Header("UI Components")]
-    public Slider healthSlider; // 규키 체력바 슬라이더
-
     [Header("Effect")]
+    public GameObject bleedingEffect;
     public GameObject dustPrefab;
     public Transform dustSpawnPoint;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-        originalColor = sr.color;
     }
 
     private void Start()
     {
-        healthSlider.maxValue = HP;
-        healthSlider.value = HP;
-
         if (player == null)
         {
             GameObject go = GameObject.FindWithTag("Player");
             if (go != null) player = go.transform;
         }
 
-        if (!ColorUtility.TryParseHtmlString(flashHexColor, out flashColor))
-        {
-            flashColor = Color.red;
-            Debug.LogWarning("헥스 색상 파싱 실패. 기본색(빨강)으로 설정.");
-        }
     } // Start ed
 
     private void Update()
@@ -151,7 +133,7 @@ public class Gyuki : MonoBehaviour , EnemyDamage
         animator.SetBool("Move", false);
         if (isAtk || isCooling) return;
         isAtk = true;
-        int pattern = Random.Range(0, 3);
+        int pattern = Random.Range(0, 2);
 
         switch (pattern)
         {
@@ -204,10 +186,10 @@ public class Gyuki : MonoBehaviour , EnemyDamage
     
     public void TakeDamage(int damage) // 데미지 스크립트
     {
+        BleedingEffect();
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0)
         {
-            Destroy(healthSlider);
             animator.Play("Gyuki_die"); // 사망 모션 재생
             GameManager.Instance.AddGold(100); // 재화 지급, 1~5 사이 랜덤.
             Debug.Log("규키. 스러지다.");
@@ -216,7 +198,6 @@ public class Gyuki : MonoBehaviour , EnemyDamage
         else
         {
             Debug.Log("데미지! 규키 남은 체력 : " + HP);
-            healthSlider.value = HP;
         }
     }
     private void OnDrawGizmosSelected()
@@ -240,12 +221,13 @@ public class Gyuki : MonoBehaviour , EnemyDamage
             Destroy(dustPrefab, 1f); // 1초 후 자동 제거
         }
     }
-
-    private IEnumerator FlashWhite()
+    private void BleedingEffect()
     {
-        sr.color = flashColor;
-        Debug.Log("깜빡!");
-        yield return new WaitForSeconds(0.2f);
-        sr.color = originalColor;
-    }
+        if (bleedingEffect != null)
+        {
+            GameObject vfx = Instantiate(bleedingEffect, transform.position, Quaternion.identity);
+            Destroy(vfx, 1f);
+        }
+    } // BleedingEffect ed
+
 } // class ed
