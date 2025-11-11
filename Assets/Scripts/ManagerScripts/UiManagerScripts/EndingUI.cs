@@ -5,81 +5,60 @@ using System.Collections;
 
 public class EndingUI : MonoBehaviour
 {
-    public TMP_Text[] texts;
-    public float fadeDuration = 2f;
-    public float delayBetween = 1f;
+    public CanvasGroup[] texts;
+    public CanvasGroup[] images;
+    private float fadeTime = 1f, holdtime = 3f;
 
-    [Header("Fade Out to Title")]
-    public CanvasGroup fadeOverlay; // 화면 전체를 덮는 검은 패널
-    public float fadeOutDuration = 1.5f;
-    public string titleSceneName = "Title"; // 타이틀 씬 이름
+    private bool End = false;
 
-    private bool canProceed = false;
+    public CanvasGroup fadeImage;
 
-    void Start()
+    void Start() => StartCoroutine(Play());
+
+    IEnumerator Play()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        // 텍스트 처음에는 모두 투명
-        foreach (var t in texts)
+        for (int i = 0; i < texts.Length; i++)
         {
-            Color c = t.color;
-            c.a = 0f;
-            t.color = c;
-        }
-
-        // 암전 패널 초기화
-        if (fadeOverlay != null)
-        {
-            fadeOverlay.alpha = 0f;
-        }
-
-        StartCoroutine(FadeTexts());
-    }
-
-    void Update()
-    {
-        if (canProceed && Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(FadeOutAndLoadTitle());
-        }
-    }
-
-    IEnumerator FadeTexts()
-    {
-        foreach (var t in texts)
-        {
-            float elapsed = 0f;
-            Color c = t.color;
-
-            while (elapsed < fadeDuration)
+            if (texts[i] != null) yield return Fade(texts[i], 0, 1);
+            yield return new WaitForSeconds(0.5f);
+            if (images[i] != null) yield return Fade(images[i], 0, 1);
+            yield return new WaitForSeconds(holdtime);
+            if (i != texts.Length - 1)
             {
-                elapsed += Time.deltaTime;
-                c.a = Mathf.Clamp01(elapsed / fadeDuration);
-                t.color = c;
-                yield return null;
+                if (texts[i] != null) yield return Fade(texts[i], 1, 0);
+                yield return new WaitForSeconds(0.5f);
+                if (images[i] != null) yield return Fade(images[i], 1, 0);
+                yield return new WaitForSeconds(0.5f);
             }
-
-            yield return new WaitForSeconds(delayBetween);
+            End = true;
         }
+        Debug.Log("엔딩 종료");
+    } // Play ed
 
-        // 모든 텍스트가 나타난 후, 스페이스바 입력 가능
-        canProceed = true;
-    }
-
-    IEnumerator FadeOutAndLoadTitle()
+    IEnumerator Fade(CanvasGroup cg, float from, float to)
     {
-        float elapsed = 0f;
-        while (elapsed < fadeOutDuration)
+        float t = 0;
+        while (t < fadeTime)
         {
-            elapsed += Time.deltaTime;
-            if (fadeOverlay != null)
-                fadeOverlay.alpha = Mathf.Clamp01(elapsed / fadeOutDuration);
+            t += Time.deltaTime;
+            cg.alpha = Mathf.Lerp(from, to, t / fadeTime);
             yield return null;
         }
-        yield return new WaitForSeconds(1f);
-        // 타이틀 씬으로 이동
-        SceneManager.LoadScene(titleSceneName);
+    }
+
+    public void GoTitleBtn()
+    {
+        if (End && Input.GetKeyUp(KeyCode.Space))
+        {
+            StartCoroutine(GoTitle());
+        }
+    }
+
+    private IEnumerator GoTitle()
+    {
+        if (fadeImage != null) yield return Fade(fadeImage, 0, 1);
+        SaveManager.ClearSave();
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Start");
     }
 }

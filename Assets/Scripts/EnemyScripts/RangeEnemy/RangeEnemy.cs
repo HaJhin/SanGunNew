@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 
 public class RangeEnemy : MonoBehaviour, EnemyDamage
@@ -8,6 +9,7 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
     // 상태 관련
     public enum State { Idle, Chase, Attack, Die }
     State currentState = State.Idle;
+    private State prevState;
 
     private Animator anim;
     private SpriteRenderer spriteRenderer;
@@ -27,12 +29,20 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
     public GameObject projectile; // 투사체 프리펩
     public Transform firePoint; // 투사체 발사 위치
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip moveClip;
+    public AudioClip AtkClip;
+    public AudioClip hitClip;
+    public AudioClip dieClip;
+
     [Header("References")]
     private Transform player; // 플레이어의 위치
     public GameObject bleedingEffect;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>(); // 애니메이터 초기화
         spriteRenderer = GetComponent<SpriteRenderer>(); // 스프라이트 렌더러 초기화
         player = GameObject.FindWithTag("Player").transform; // 플레이어 태그로 플레이어 위치 정보 초기화
@@ -40,10 +50,19 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
 
     private void Update()
     {
+        CheckPause();
+        if (currentState == State.Die) return;
+
         if (currentState != State.Die)
         {
             CheckState();
-            DoState();
+            if (currentState != prevState)
+            {
+                ExitState(prevState);
+                EnterState(currentState);
+                prevState = currentState;
+            }
+            UpdateState(currentState);
         }
     }
 
@@ -52,40 +71,67 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
         float dist = Vector3.Distance(transform.position, player.position); // 플레이어와의 거리 계산
 
         // State 전환
-        if (HP <= 0) currentState = State.Die;
-        else if (dist <= atkRange) currentState = State.Attack;
-        else if (dist <= chaseRange) currentState = State.Chase;
-        else currentState = State.Idle;
+        if (HP <= 0)
+        {
+            currentState = State.Die;
+            return;
+        }
+
+        if (currentState != State.Die)
+        {
+            if (dist <= atkRange) currentState = State.Attack;
+            else if (dist <= chaseRange) currentState = State.Chase;
+            else currentState = State.Idle;
+        }
     } // CheckState ed
 
-    private void DoState() // State 실행
+    private void EnterState(State newState) // State 진입
     {
         // State 수행
-        switch (currentState)
+        switch (newState)
         {
             case State.Idle:
                 anim.SetBool("move", false);
                 anim.SetBool("atk", false);
-                Debug.Log("현 상태 Idle");
                 break;
             case State.Chase:
+                audioSource.clip = moveClip;
+                audioSource.Play();
                 anim.SetBool("move", true);
                 anim.SetBool("atk", false);
-                RangeEnemyMove();
-                Debug.Log("현 상태 Chase");
                 break;
             case State.Attack:
                 anim.SetBool("move", false);
                 anim.SetBool("atk", true );
-                Debug.Log("현 상태 Attack");
                 break;
             case State.Die:
-                anim.Play("Enemy2_Die");
+                audioSource.PlayOneShot(dieClip);
+                GameManager.Instance.AddGold(Random.Range(2,8)); // 재화 지급, 2~7 사이 랜덤.
                 Destroy(gameObject, 2f); // 1초 후 제거
-                Debug.Log("현 상태 Die");
                 break;
         } // Switch ed
-    } // DoState ed
+    } // EnterState ed
+
+    public void UpdateState(State currentState) 
+    {
+        switch (currentState)
+        {
+            case State.Chase:
+                RangeEnemyMove();
+                break;
+        } // switch ed
+    }  // updateState ed
+
+    public void ExitState(State oldState)
+    {
+        switch (oldState)
+        {
+            case State.Chase:
+                audioSource.Stop();
+                audioSource.clip = null;
+                break;
+        } // switch ed
+    } // ExitState ed
 
     void RangeEnemyAtk() // 공격 메서드
     {
@@ -106,6 +152,8 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
         }
     }
     void RecoveryAtk(){if (!canAtk) canAtk = true;} // 공격 회복
+
+    void AtkSound() { audioSource.PlayOneShot(AtkClip); }
 
     void RangeEnemyMove() // 이동 메서드
     {
@@ -130,17 +178,17 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0)
         {
-            anim.Play("Enemy2_die"); // 사망 모션 재생
-            GameManager.Instance.AddGold(Random.Range(1, 6)); // 재화 지급, 1~5 사이 랜덤.
-            Debug.Log("골드 지급!");
+            anim.Play("Enemy2_die");
+            Debug.Log("캇파 처치");
         }
         else 
         { 
             anim.Play("Enemy2_damage");
+            audioSource.PlayOneShot(hitClip);
             currentState = State.Idle;
         } // 아닐 시 데미지
         
-        Debug.Log("데미지! 남은 체력 : " + HP);
+        
     }
     private void BleedingEffect()
     {
@@ -150,4 +198,11 @@ public class RangeEnemy : MonoBehaviour, EnemyDamage
             Destroy(vfx, 1f);
         }
     } // BleedingEffect ed
+    private void CheckPause()
+    {
+        if (GameManager.Instance.pauseNow)
+        {
+            audioSource.Stop();
+        }
+    }
 }

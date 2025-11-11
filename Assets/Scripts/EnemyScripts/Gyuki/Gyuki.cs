@@ -8,6 +8,8 @@ public class Gyuki : MonoBehaviour , EnemyDamage
     public enum BossState { Idle, Move, Atk, Die }
     public BossState currentState = BossState.Idle;
 
+    public bool Dead = false;
+
     [Header("Stat")]
     public int HP = 100;
 
@@ -33,13 +35,22 @@ public class Gyuki : MonoBehaviour , EnemyDamage
     public GameObject dustPrefab;
     public Transform dustSpawnPoint;
 
+    [Header("Sound")]
+    private AudioSource audioSource;
+    public AudioClip[] atkClips;
+    public AudioClip idleClip;
+    public AudioClip dieClip;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = idleClip;
         animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
+        audioSource.Play();
         if (player == null)
         {
             GameObject go = GameObject.FindWithTag("Player");
@@ -62,8 +73,7 @@ public class Gyuki : MonoBehaviour , EnemyDamage
     {
         if (HP <= 0)
         {
-           currentState = BossState.Die;
-           Destroy(gameObject, 2f);
+            currentState = BossState.Die;
            return;
         }
 
@@ -106,6 +116,7 @@ public class Gyuki : MonoBehaviour , EnemyDamage
                 AtkAction();
                 break;
             case BossState.Die:
+                DieAction();
                 break;
         }
     } // DoAction ed
@@ -143,9 +154,6 @@ public class Gyuki : MonoBehaviour , EnemyDamage
             case 1:
                 StartCoroutine(AtkRoutine("Atk2",atk2Damage,3f));
                 break;
-            case 2:
-                StartCoroutine(Backstep());
-                break;
         }
     } // AtkAction ed
 
@@ -160,29 +168,22 @@ public class Gyuki : MonoBehaviour , EnemyDamage
         currentState = BossState.Move;
     }
 
-    private IEnumerator Backstep()
+    private void DieAction()
     {
-        isAtk = true;
-        animator.Play("Gyuki_backstep");
-        Vector3 start = transform.position;
-        Vector3 end = start - -transform.right * backstepDistance;
-        float time = 2.0f;
-        for (float t = 0; t < 1f; t += Time.deltaTime / time)
+        if (!Dead)
         {
-            transform.position = Vector3.Lerp(start, end, Mathf.SmoothStep(t, 1, 0));
-            yield return null;
+            animator.Play("Gyuki_die");
+            audioSource.PlayOneShot(dieClip);
+            GameManager.Instance.AddGold(100);
+            Destroy(gameObject, 3f);
+            Dead = true;
         }
-        transform.position = end;
-        yield return new WaitUntil(() => !isAtk);       
-        yield return new WaitForSeconds(1f); // 여운 시간
-        isAtk = false;
-        currentState = BossState.Move;  
-    } // Backstep ed
+    }
 
     public void ActiveSkillCollider(int i) => atkColliders[i].SetActive(true);
     public void InactiveSkillCollider(int i) => atkColliders[i].SetActive(false);
-
     public void IsAtk() { isAtk = false; }
+    public void AtkSound(int i) { audioSource.PlayOneShot(atkClips[i]); }
     
     public void TakeDamage(int damage) // 데미지 스크립트
     {
@@ -190,8 +191,6 @@ public class Gyuki : MonoBehaviour , EnemyDamage
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0)
         {
-            animator.Play("Gyuki_die"); // 사망 모션 재생
-            GameManager.Instance.AddGold(100); // 재화 지급, 1~5 사이 랜덤.
             Debug.Log("규키. 스러지다.");
             FlagManager.Instance.SetFlag("GyukiTP", true);
         }
@@ -217,8 +216,8 @@ public class Gyuki : MonoBehaviour , EnemyDamage
     {
         if (dustPrefab != null && dustSpawnPoint != null)
         {
-            Instantiate(dustPrefab, dustSpawnPoint.position, dustSpawnPoint.rotation);
-            Destroy(dustPrefab, 1f); // 1초 후 자동 제거
+            GameObject dust = Instantiate(dustPrefab, dustSpawnPoint.position, dustSpawnPoint.rotation);
+            Destroy(dust, 1f); // 1초 후 자동 제거
         }
     }
     private void BleedingEffect()

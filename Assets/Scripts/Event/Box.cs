@@ -6,6 +6,8 @@ public class Box : MonoBehaviour
 {
     public Transform lidBone;
 
+    public GameObject openEffect;
+
     public float closedAngle = 90f;
     public float openAngle = -35f;
     private float currentAngle;
@@ -50,6 +52,8 @@ public class Box : MonoBehaviour
     private void BoxOpen()
     {
         isOpen = true;
+
+        GameObject vfx = Instantiate(openEffect,transform.position, Quaternion.identity);
         GameManager.Instance.AddGold(50);
     }
 }

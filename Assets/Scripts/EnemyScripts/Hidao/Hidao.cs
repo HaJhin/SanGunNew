@@ -9,6 +9,7 @@ public class Hidao : MonoBehaviour,EnemyDamage
 
     public string flagName = "fight";
     public bool isFight = false;
+    private bool Dead = false;
 
     [Header("Stat")]
     public int HP = 30;
@@ -33,16 +34,26 @@ public class Hidao : MonoBehaviour,EnemyDamage
     private Transform player;
     private Animator animator;
     private SpriteRenderer sr;
+    private Slash slashEffect;
     public GameObject bleedingEffect;
+
+    [Header("Sound")]
+    private AudioSource audioSource;
+    public AudioClip idleClip;
+    public AudioClip[] atkClips;
+    public AudioClip dieClip;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        slashEffect = GetComponentInChildren<Slash>();
     }
 
     private void Start()
     {
+        // audioSource.PlayOneShot(idleClip);
         if (player == null)
         {
             GameObject go = GameObject.FindWithTag("Player");
@@ -65,7 +76,6 @@ public class Hidao : MonoBehaviour,EnemyDamage
         if (HP <= 0)
         {
             currentState = BossState.Die;
-            Destroy(gameObject, 4f);
             return;
         }
 
@@ -110,6 +120,7 @@ public class Hidao : MonoBehaviour,EnemyDamage
                 AtkAction();
                 break;
             case BossState.Die:
+                DieAction();
                 break;
         }
     } // DoAction ed
@@ -192,10 +203,23 @@ public class Hidao : MonoBehaviour,EnemyDamage
         currentState = BossState.Idle;
     } // AtkRountine ed
 
+    private void DieAction()
+    {
+        if (!Dead)
+        {
+            animator.Play("Hidao_die"); // 사망 모션 재생
+            audioSource.PlayOneShot(dieClip);
+            Destroy(gameObject, 4f);
+            Dead = true;
+        }
+    }
+
     // 공격 제어 메서드 //
     public void ActiveSkillCollider(int i) => atkColliders[i].SetActive(true);
     public void InactiveSkillCollider(int i) => atkColliders[i].SetActive(false);
     public void IsAtk() { isAtk = false; }
+    public void SlashEffect() { slashEffect.PlaySlashEffect(); }
+    public void AtkSound(int i) { audioSource.PlayOneShot(atkClips[i]); }
 
     public void TakeDamage(int damage) // 데미지 스크립트
     {
@@ -203,7 +227,6 @@ public class Hidao : MonoBehaviour,EnemyDamage
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0)
         {
-            animator.Play("Hidao_die"); // 사망 모션 재생
             Debug.Log("히다오. 스러지다.");
             FlagManager.Instance.SetFlag("HidaoTP", true);
         }

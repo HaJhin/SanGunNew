@@ -38,8 +38,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        HP = MaxHP;
-        shield = 0;
+        if (SaveManager.currentData == null)
+        {
+            HP = MaxHP;
+            shield = 0;
+        }
         // HPUI,ShieldUI 초기화
         HPUI.init(MaxHP);
         ShieldUI.Init(maxShield);
@@ -55,6 +58,8 @@ public class GameManager : MonoBehaviour
     public void TakeDamage(int dmg) // 체력 or 쉴드 감소
     {
         DamageOverlay.instance.ShowHitEffect();
+        Player.Instance.DamageSound();
+        Player.Instance.RecoveryCol();
         Debug.Log("산군 데미지!");
         if (shield > 0)
         {

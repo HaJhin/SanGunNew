@@ -27,6 +27,11 @@ public class GameoverUI : MonoBehaviour
             }
     }
 
+    public void RegameBtn()
+    {
+        StartCoroutine(Regame());
+    }
+
     public void GoTitleBtn()
     {
         StartCoroutine(GoTitle());
@@ -47,7 +52,20 @@ public class GameoverUI : MonoBehaviour
     public IEnumerator GoTitle()
     {
         yield return StartCoroutine(fadeController.FadeOut());
+        SaveManager.ClearSave();
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Start");
+    }
+
+    public IEnumerator Regame()
+    {
+        yield return StartCoroutine(fadeController.FadeOut());
+        GameManager.Instance.GameOver = false;
+        SaveManager.LoadGame(GameManager.Instance);
+        GameManager.Instance.HPUI.setHP(GameManager.Instance.HP);
+        GameManager.Instance.ShieldUI.SetShield(GameManager.Instance.shield);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SaveManager.currentData.lastSceneName);
+        gameoverUI.SetActive(false); isGameOverExecuted = false;
     }
 }

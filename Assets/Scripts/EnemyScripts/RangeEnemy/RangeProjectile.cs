@@ -13,8 +13,17 @@ public class RangeProjectile : MonoBehaviour
 
     public GameObject prjEffect;
 
+    public AudioSource audioSource;
+    public AudioClip boomClip;
+
+    public Collider colider;
+    public SpriteRenderer sr;
+    
     private void Awake()
     {
+        colider = GetComponent<Collider>();
+        sr = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -44,7 +53,10 @@ public class RangeProjectile : MonoBehaviour
             if (player != null)
             {
                 PrjEffect();
-                Destroy(gameObject);
+                audioSource.PlayOneShot(boomClip);
+                Color color = sr.color; color.a = 0f; sr.color = color;
+                colider.enabled = false;
+                Destroy(gameObject,0.5f);
                 GameManager.Instance.TakeDamage(damage);
                 Debug.Log("플레이어 데미지! 남은체력 : " + GameManager.Instance.HP);
                 player.animator.Play("Player_damage");
@@ -52,7 +64,10 @@ public class RangeProjectile : MonoBehaviour
         } else 
         {
             PrjEffect();
-            Destroy(gameObject);
+            audioSource.PlayOneShot(boomClip);
+            Color color = sr.color; color.a = 0f; sr.color = color;
+            colider.enabled = false;
+            Destroy(gameObject,0.5f);
         }
     } // OTE ed
 

@@ -15,14 +15,20 @@ public class TalkManager : MonoBehaviour
     private bool isTalking = false;
     private Action onTalkEndCallback; // 대화 종료 콜백
 
+    public AudioSource audioSource;
+    public AudioClip pageSound;
+
     public void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null) audioSource.clip = pageSound;
         dialoguePanel.SetActive(false);
     }
 
     // 특정 ID에서 대화 시작
     public void StartTalk(string StartID,Action onTalkEnd = null) // 대화 시작
     {
+        audioSource.Play();
         currentTalk = FindTalk(StartID);
         if (currentTalk != null)
         {
@@ -48,6 +54,7 @@ public class TalkManager : MonoBehaviour
 
     private void NextTalk() // 다음 대화로 넘어가기 *없을 시 대화 종료
     {
+        audioSource.Play();
         if(currentTalk.NextID == "None" || string.IsNullOrEmpty(currentTalk.NextID))
         {
             EndTalk();

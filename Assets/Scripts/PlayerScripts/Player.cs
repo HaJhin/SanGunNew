@@ -19,8 +19,6 @@ public class Player : MonoBehaviour
     private Vector3 dashDirection; // 대쉬방향
     private float dashTimer; // 대쉬쿨타임
 
-    public bool dashAtk; // 대시공격 가능 여부
-
     [Header("Attack Settings")]
     public GameObject[] skillColliders; // 공격 히트박스
     public int maxComboLevel; // 현재 콤보 레벨(1~3)
@@ -31,15 +29,27 @@ public class Player : MonoBehaviour
     [Header("Visual Components")]
     public SpriteRenderer spriteRenderer; // 스프라이트렌더러
     public Animator animator; // 애니메이터
-    public Transform hitBox; // 히트박스 컴포넨트
+    public Transform atkHitbox; // 어택 히트박스 
+    public Collider dashAtkHitbox; // 대시어택 히트박스
+    public GameObject dashAtkVFX; // 대시어택 이펙트
+
+    [Header("Audio Source")]
+    private AudioSource audioSource;
+
+    public AudioClip dashClip;
+    public AudioClip dashAtkClip;
+    public AudioClip damageClip;
+    public AudioClip dieClip;
+    public AudioClip[] atkClips;
 
     [Header("System Components")]
     private Rigidbody rb; // 리지드바디
     private Collider playerCollider; // 플레이어 본체 콜라이더
 
     // 상태 정의
-    private enum PlayerState {idle,Move,Atk,Dash,Dead}
+    public enum PlayerState {idle,Move,Atk,Dash,Dead}
     private PlayerState currentState = PlayerState.idle;
+    public PlayerState CurrentState => currentState;
 
     private void Awake() // 초기화
     {
@@ -52,14 +62,17 @@ public class Player : MonoBehaviour
         playerCollider = GetComponentInChildren<Collider>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+        
     } // Awake ed
 
     private void Start()
     {
         OnApplicationFocus(true);
+        dashAtkHitbox.enabled = false;
     }
     private void Update() // 메인 루프
-    {
+    { 
         if (currentState == PlayerState.Dead) return;
 
         if (GameManager.Instance.GameOver && currentState != PlayerState.Dead)
@@ -77,7 +90,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            ChangeState(PlayerState.idle);
+            // ChangeState(PlayerState.idle);
             return;
         }
 
@@ -146,7 +159,7 @@ public class Player : MonoBehaviour
         switch (newState)
         {
             case PlayerState.idle:
-                animator.SetBool("isMoving",false); 
+                animator.SetBool("isMoving",false);
                 break;
             case PlayerState.Move:
                 animator.SetBool("isMoving", true);
@@ -177,15 +190,17 @@ public class Player : MonoBehaviour
         {
             spriteRenderer.flipX = moveInput.x > 0; // 스프라이트 전환
             // 히트박스 방향 전환
-            Vector3 pos = hitBox.localPosition;
+            Vector3 pos = atkHitbox.localPosition;
             pos.x = Mathf.Abs(pos.x) * (moveInput.x < 0 ? -1 : 1);
-            hitBox.localPosition = pos;
+            atkHitbox.localPosition = pos;
         } // if ed
     } // HandleMovement ed
 
     void HandleDash() // 대쉬 메서드
     {
-        if (dashTimer == 0f)
+        if (GameManager.Instance.dashAtk) { audioSource.PlayOneShot(dashAtkClip); }
+
+        if (dashTimer <= 0f)
         {
             dashDirection = moveInput.normalized;
             animator.SetTrigger("Dash");
@@ -194,11 +209,18 @@ public class Player : MonoBehaviour
             Collider col = GetComponent<Collider>();
             if (col != null)
                 col.enabled = false;
-        }
+
+            if (GameManager.Instance.dashAtk)
+            {
+                dashAtkHitbox.enabled = true;
+                DashAtkEffect();
+            }
+
+        } // if ed
 
         dashTimer += Time.deltaTime;
         rb.MovePosition(rb.position + dashDirection * dashSpeed * Time.deltaTime);
-
+        
         if (dashTimer >= dashDuration)
         {
             dashTimer = 0f;
@@ -207,6 +229,8 @@ public class Player : MonoBehaviour
             Collider col = GetComponent<Collider>();
             if (col != null)
                 col.enabled = true;
+
+            if (GameManager.Instance.dashAtk) { dashAtkHitbox.enabled = false; }
 
             ChangeState(PlayerState.idle);
         }
@@ -234,6 +258,23 @@ public class Player : MonoBehaviour
     public void CanMove() {if (currentState == PlayerState.Atk) ChangeState(PlayerState.idle);}
     public void ReturnIdle(){ChangeState(PlayerState.idle);}
     public void DashZero() { dashDirection = Vector3.zero; rb.velocity = Vector3.zero; }
+    public void DamageSound() { audioSource.PlayOneShot(damageClip); }
+    public void AtkSound(int i) { audioSource.PlayOneShot(atkClips[i]); }
+    public void RecoveryCol()
+    {
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+            col.enabled = true;
+    }
+
+    private void DashAtkEffect()
+    {
+        if (dashAtkVFX != null)
+        {
+            GameObject vfx = Instantiate(dashAtkVFX, transform.position, Quaternion.identity);
+            Destroy(vfx, 0.8f);
+        }
+    } // BleedingEffect ed
 
     // 커서 숨기기
     private void OnApplicationFocus(bool focus){Cursor.lockState = focus ? CursorLockMode.Locked : CursorLockMode.None;}

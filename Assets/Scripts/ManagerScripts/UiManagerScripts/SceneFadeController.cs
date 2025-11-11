@@ -42,7 +42,7 @@ public class SceneFadeController : MonoBehaviour
 
         while (elapsed < fadeDuration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
             fadeImage.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;

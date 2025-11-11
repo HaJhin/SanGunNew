@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 
 public class AssaultEnemy : MonoBehaviour, EnemyDamage
 {
     public enum FSM {idle,Chase,Attack,Die}
-
     public FSM State = FSM.idle;
+    private FSM prevState;
 
     public int HP = 20;
-    public float chaseRange = 2.5f; // 추적 거리
-    public float atkRange = 0.7f; // 공격 거리
-    public float moveSpeed = 0.4f; // 이동속도
+    public float chaseRange = 3f; // 추적 거리
+    public float atkRange = 1.3f; // 공격 거리
+    public float moveSpeed = 0.5f; // 이동속도
     public float attackCycle = 1f;
     public float currentCycle = 0f;
 
+    public   bool canMove = true;
     public bool canAtk = true;
 
     public GameObject atkCollider;
@@ -27,8 +30,17 @@ public class AssaultEnemy : MonoBehaviour, EnemyDamage
     private SpriteRenderer spriteRenderer;
     private float attackDirX = 0f; // 공격 시작 시 방향을 저장
 
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public AudioClip idleClip;
+    public AudioClip atkClip;
+    public AudioClip moveClip;
+    public AudioClip hitClip;
+    public AudioClip dieClip;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>(); // 애니메이터 초기화
         spriteRenderer = GetComponent<SpriteRenderer>(); // 스프라이트 렌더러 초기화
         player = GameObject.FindWithTag("Player").transform; // 플레이어 태그로 플레이어 위치 정보 초기화
@@ -36,12 +48,17 @@ public class AssaultEnemy : MonoBehaviour, EnemyDamage
 
     private void Update()
     {
-        if (State != FSM.Die)
+        CheckPause();
+        Debug.Log(State);
+        if (State == FSM.Die) return;
+        CheckState();
+        if (State != prevState) 
         {
-            CheckState();
-            CheckAttackCycle();
-            DoState();
+            ExitState(prevState);
+            EnterState(State);
+            prevState = State;
         }
+        UpdateState(State);
     } // Update ed
 
     private void CheckState()
@@ -53,63 +70,99 @@ public class AssaultEnemy : MonoBehaviour, EnemyDamage
             return;
         }
 
-            float distance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance <= atkRange)
         {
-            if (State != FSM.Attack) // 공격 상태 진입 시 최초 1회만 저장
-                attackDirX = player.position.x - transform.position.x;
-
-            anim.SetBool("Attack", canAtk);
-            anim.SetBool("Chase", false);
             State = FSM.Attack;
         }
         else if (distance <= chaseRange)
         {
-            anim.SetBool("Attack",false);
-            anim.SetBool("Chase", true);
-            // 공격 애니메이션 재생 중엔 추적 상태로 가지 않음
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy1_Atk"))
             State = FSM.Chase;
         }
         else
         {
-            anim.SetBool("Attack", false);
-            anim.SetBool("Chase", false);
+            if (State != FSM.idle)
             State = FSM.idle;
         } // if - else if - else ed
 
     } // CheckState ed
 
-    private void DoState()
+    private void EnterState(FSM newState)
     {
-        switch (State)
+        switch(newState)
         {
             case FSM.idle:
+                anim.SetBool("Chase", false);
                 break;
+
+            case FSM.Chase:
+                audioSource.clip = moveClip;
+                audioSource.Play();
+                anim.SetBool("Chase", true);
+                break;
+
+            case FSM.Attack:
+                break;
+
+            case FSM.Die:
+                anim.Play("Enemy1_die");
+                audioSource.PlayOneShot(dieClip);
+                GameManager.Instance.AddGold(Random.Range(3, 9)); // 재화 지급, 3~8 사이 랜덤.
+                Destroy(gameObject, 0.9f);
+                break;
+        }
+    }
+
+    private void UpdateState(FSM currentState)
+    {
+        switch (currentState)
+        {
             case FSM.Chase:
                 ChasePlayer();
                 break;
             case FSM.Attack:
-                FacePlayer();
-                break;
-            case FSM.Die:
-                // CheckState에서 처리
-                break;
-            default:
+                AtkPlayer();
                 break;
         } // switch ed
-    } // Dostate ed
+    } // UpdateState ed 
+
+    private void ExitState(FSM oldState)
+    {
+        switch (oldState)
+        {
+            case FSM.Chase:
+                audioSource.Stop();
+                audioSource.clip = null;
+                anim.SetBool("Chase", false);
+                break;
+        } // switch ed
+    } // ExitState ed
 
     // 플레이어를 향해 이동
     private void ChasePlayer()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        direction.y = 0f;
+        if (canMove)
+        {
+            Vector3 direction = (player.position - transform.position).normalized;
+            direction.y = 0f;
 
-        transform.position += direction * moveSpeed * Time.deltaTime; // 직접 위치 이동
-        FlipSprite(direction.x); // 방향 반전
+            transform.position += direction * moveSpeed * Time.deltaTime; // 직접 위치 이동
+            FlipSprite(direction.x); // 방향 반전
+        }
     } // ChasePlayer ed
+
+    private void AtkPlayer()
+    {
+        if (canAtk)
+        {
+            attackDirX = player.position.x - transform.position.x;
+            FlipSprite(attackDirX);
+            canMove = false;
+            canAtk = false;
+            anim.SetTrigger("Attack");
+        }
+    }
 
     // 공격 시 플레이어를 바라보게 하기
     private void FacePlayer()
@@ -130,40 +183,23 @@ public class AssaultEnemy : MonoBehaviour, EnemyDamage
         hitbox.localPosition = pos;
     } // FlipSprite ed
 
-    // 공격 쿨타임을 확인하는 메서드
-    private void CheckAttackCycle()
-    {
-        if (!canAtk)
-        {
-            currentCycle += Time.deltaTime;
-
-            if (currentCycle >= attackCycle)
-            {
-                canAtk = true;
-                currentCycle = 0f;
-            } 
-        } // if ed
-    } // CAC ed
-
-    // 공격 종료 후 호출 - 쿨타임 시작
-    public void CantAttack()
-    {
-        canAtk = false;
-    }
-
+   
+    // 공격 제어 메서드
+    public void CantAttack() { canAtk = true; canMove = true; attackDirX = 0f; }
     public void ActiveSkillCollider() => atkCollider.SetActive(true);
+    public void AtkSound() => audioSource.PlayOneShot(atkClip);
     public void InactiveSkillCollider() => atkCollider.SetActive(false);
 
     public void TakeDamage(int damage) // 데미지 스크립트
     {
         BleedingEffect();
+        canMove = false;
         HP -= damage; // 죽을시 TakeDamage 안되도록 **
         if (HP <= 0) {
             anim.Play("Enemy1_die"); // 사망 모션 재생
-            GameManager.Instance.AddGold(Random.Range(3,9)); // 재화 지급, 3~8 사이 랜덤.
             Debug.Log("골드 지급!");
         }
-        else { anim.Play("Enemy1_damage"); } // 아닐 시 데미지
+        else { anim.Play("Enemy1_damage"); audioSource.PlayOneShot(hitClip); } // 아닐 시 데미지
         Debug.Log("데미지! 남은 체력 : " + HP);
     } // TakeDamage ed
 
@@ -175,4 +211,12 @@ public class AssaultEnemy : MonoBehaviour, EnemyDamage
             Destroy(vfx, 1f);
         }
     } // BleedingEffect ed
+
+    private void CheckPause()
+    {
+        if (GameManager.Instance.pauseNow)
+        {
+            audioSource.Stop();
+        }
+    }
 }

@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lidBone: {fileID: 815758857}
+  openEffect: {fileID: 8791802859087666345, guid: fb2ffa54ea23cbe47981a1b2cba40a2b, type: 3}
   closedAngle: 90
   openAngle: -35
   speed: 1
@@ -484,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeController: {fileID: 0}
   nextSceneName: S1_5
+  flagName: Ending
 --- !u!65 &1063897103
 BoxCollider:
   m_ObjectHideFlags: 0

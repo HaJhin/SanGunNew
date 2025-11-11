@@ -39,6 +39,9 @@ public class SceneChanger : MonoBehaviour
     IEnumerator ChangeScene()
     {
         yield return fadeController.FadeOut(); // 암전 시작
+        SaveManager.SaveGame(GameManager.Instance); // 저장
+        Debug.Log("세이브 완료");
+        Debug.Log("PlayerHP : " + GameManager.Instance.HP);
         SceneManager.LoadScene(nextSceneName); // 씬 전환
     }
 

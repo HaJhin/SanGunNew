@@ -6,9 +6,7 @@ public class PAE : MonoBehaviour
 {
     // Player Attack Event = PAE
 
-    // public PlayerCon player;
     public Player player;
-    public GameObject[] skillColliders;
 
     public void ActiveSkillCollider(int idx)
     {
@@ -33,5 +31,15 @@ public class PAE : MonoBehaviour
     public void DashZero()
     {
         player.DashZero(); // 부모의 메서드 실행
+    }
+
+    public void AtkSound(int i)
+    {
+        player.AtkSound(i);
+    }
+
+    public void RecoveryCol()
+    {
+        player.RecoveryCol();
     }
 }

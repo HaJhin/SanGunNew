@@ -21,6 +21,10 @@ public class Shop : MonoBehaviour
 
     private bool isOpen = false;
 
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public AudioClip coinSound;
+
     private void Awake()
     {
         Instance = this;
@@ -28,6 +32,8 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null ) { audioSource.clip = coinSound; }
         if (shopUI != null)
             shopUI.SetActive(isOpen); // 시작할 때는 닫혀있음
     }
@@ -48,6 +54,7 @@ public class Shop : MonoBehaviour
 
         if (playerGold >= currentPrice)
         {
+            audioSource.Play();
             GameManager.Instance.SpendGold(currentPrice);
             ApplyItem(currentID);
             Debug.Log($"{currentItem} 구매완료");

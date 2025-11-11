@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
-    public int damage = 5;
-
+   
     private void OnTriggerEnter(Collider hit)
     {
         EnemyDamage target = hit.GetComponent<EnemyDamage>();
         if (target != null )
         {
-            target.TakeDamage(damage);
+            target.TakeDamage(GameManager.Instance.atk);
         } // if ed
     } // OTE ed
 } // class ed 
